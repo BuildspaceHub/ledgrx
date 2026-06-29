@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const onboardingData = [
   {
@@ -29,19 +30,20 @@ const onboardingData = [
 
 export default function Onboarding() {
   const [currentIndex, setCorrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleNext = () => {
     if (currentIndex < onboardingData.length - 1) {
       setCorrentIndex(currentIndex + 1);
     } else {
-      console.log("Navigate to Login/Home");
+      navigate("/auth/login");
     }
   };
 
   const currentScreen = onboardingData[currentIndex];
 
   return (
-    <div className="text-center flex flex-col h-screen bg-white lg:bg-green-50 justify-between m-4 md:my-1 md:mx-2 md:border md:flex-wrap md:border-2 md:border-green-200 md:rounded-4xl md:h-full md:flex lg:gap-10 md:shadow-sm md:hover:shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] md:flex-row md:justify-center md:items-center md:w-70% md:px-8 md:py-10 md:relative lg:mx-40 lg:my-5 lg:">
+    <div className="text-center flex flex-col h-screen bg-white lg:bg-green-50 justify-between m-4 md:my-1 md:mx-2 md:flex-wrap md:border-2 md:border-green-200 md:rounded-4xl md:h-full md:flex lg:gap-10 md:shadow-sm md:hover:shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] md:flex-row md:justify-center md:items-center md:w-70% md:px-8 md:py-10 md:relative lg:mx-40 lg:my-5 lg:">
       {/* {steps[count - 1]} */}
       <button className="self-end text-green-600 font-semibold text-sm mt-10 mr-6 md:absolute md:top-0 md:right-10 md:font-semibold md:text-[18px] ">
         skip
@@ -57,7 +59,7 @@ export default function Onboarding() {
         <h1 className="text-[25px] mt-20 text-start lg:text-[25px] md:mb-6  ">
           {currentScreen.title}
         </h1>
-        <p className="text-[15px] w-[300px] text-start pt-2 md:text-[18px] md:w-100% md:mb-6">
+        <p className="text-[15px] w-75 text-start pt-2 md:text-[18px] md:w-100% md:mb-6">
           {currentScreen.description}
         </p>
         <p className="text-[16px] font-normal text-[#52c218] pt-4 md:text-[19px]">

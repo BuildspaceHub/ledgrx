@@ -4,7 +4,7 @@ function Login() {
   return (
     <main>
       <div className="mt-23.25 px-10">
-        <p className=" text-2xl font-semibold pb-4">welcome Back</p>
+        <p className=" text-2xl font-semibold pb-4">Welcome Back</p>
         <div className="flex justify-center pb-5.25">
           <p className="text-sm w-61.5">
             Sign in to manage your expenses and stay on top of your finances.
