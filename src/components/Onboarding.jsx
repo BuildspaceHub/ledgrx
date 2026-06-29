@@ -57,7 +57,7 @@ export default function Onboarding() {
         <h1 className="text-[25px] mt-20 text-start lg:text-[25px] md:mb-6  ">
           {currentScreen.title}
         </h1>
-        <p className="text-[15px] w-[300px] text-start pt-2 md:text-[18px] md:w-100% md:mb-6">
+        <p className="text-[15px] w-75 text-start pt-2 md:text-[18px] md:w-100% md:mb-6">
           {currentScreen.description}
         </p>
         <p className="text-[16px] font-normal text-[#52c218] pt-4 md:text-[19px]">
