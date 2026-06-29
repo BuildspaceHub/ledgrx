@@ -1,3 +1,5 @@
+import Login from "./auth/Login";
+import SignUp from "./auth/SignUp";
 import Onboarding from "./components/Onboarding";
 import Splash from "./components/Splash";
 import { BrowserRouter, Route, Routes } from "react-router";
@@ -10,6 +12,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Splash />} />
           <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </BrowserRouter>

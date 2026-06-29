@@ -50,7 +50,7 @@ export default function Onboarding() {
       <img
         src={currentScreen.image}
         alt=""
-        className="w-100%  p-6 mt-2 flex flex-col mb-0 md:w-[270px] md:[300px] lg:w-[450px] lg:h-[500px] "
+        className="w-100%  p-6 mt-2 flex flex-col mb-0 md:w-67.5 md:[300px] lg:w-112.5 lg:h-125 "
       />
 
       <div className="flex flex-col items-start w-100% mt-0 md:w-40% md:h-100%">
