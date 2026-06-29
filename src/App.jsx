@@ -1,21 +1,26 @@
-import Login from "./auth/Login";
-import SignUp from "./auth/SignUp";
+import { BrowserRouter, Route, Routes } from "react-router";
+import Login from "./pages/auth/Login";
+import SignUp from "./pages/auth/SignUp";
 import Onboarding from "./components/Onboarding";
 import Splash from "./components/Splash";
-import { BrowserRouter, Route, Routes } from "react-router";
+import CreatePasswordPage from "./pages/CreatePasswordPage";
+import ConfirmEmailPage from "./pages/ConfirmEmailPage";
+import ConfirmPasswordPage from "./pages/ConfirmPasswordPage";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="font-semibold text-2xl text-center p-px md:w-100% h-screen md:py-10 md:bg-green-300 md:px-10">
-        {/* Welcome to Ledgr<span className="text-green-500">X</span> */}
-        <Routes>
-          <Route path="/" element={<Splash />} />
-          <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-      </div>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<Splash />} />
+        <Route path="/onboarding" element={<Onboarding />} />
+        {/* Authentication Routes */}
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/signup" element={<SignUp />} />
+        <Route path="/auth/reset-password" element={<CreatePasswordPage />} />
+        <Route path="/auth/verify-email" element={<ConfirmEmailPage />} />
+        <Route path="/auth/forgot-password" element={<ConfirmPasswordPage />} />
+      </Routes>
     </BrowserRouter>
   );
 }

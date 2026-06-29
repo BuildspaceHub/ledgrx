@@ -5,10 +5,7 @@ export default function ConfirmEmailPage() {
     <div>
       {/* Image */}
       <div className="w-30 h-30 mx-auto mb-3">
-        <img
-          src="./Mail.png"
-          alt="Mail illusionc:\Users\hakee\Downloads\Vector.png"
-        />
+        <img src="/images/Mail.png" alt="Mail illusion" />
       </div>
       {/* content */}
       <div className="mb-6 flex flex-col gap-4">
