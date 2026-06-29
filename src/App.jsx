@@ -4,6 +4,7 @@ import SignUp from "./pages/auth/SignUp";
 import Onboarding from "./components/Onboarding";
 import Splash from "./components/Splash";
 import CreatePasswordPage from "./pages/CreatePasswordPage";
+import VerifiedEmailPage from "./pages/VerifiedEmailPage";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
 import ConfirmPasswordPage from "./pages/ConfirmPasswordPage";
 
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/auth/reset-password" element={<CreatePasswordPage />} />
         <Route path="/auth/verify-email" element={<ConfirmEmailPage />} />
         <Route path="/auth/forgot-password" element={<ConfirmPasswordPage />} />
+        <Route path="/auth/user-verified" element={<VerifiedEmailPage />} />
       </Routes>
     </BrowserRouter>
   );

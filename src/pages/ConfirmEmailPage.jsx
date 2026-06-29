@@ -18,7 +18,7 @@ export default function ConfirmEmailPage() {
         </p>
       </div>
       {/* button */}
-      <Button />
+      <Button label="Confirm email" />
       <button className="mt-5 font-normal text-[12px] text-[#FF4541]">
         Resend Link
       </button>

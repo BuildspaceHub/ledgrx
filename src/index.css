@@ -2,8 +2,15 @@
 @import "tailwindcss";
 
 :root {
+  --color-brand: #52c218;
   --font-bricolage: "Bricolage Grotesque", sans-serif;
   --font-poppins: "Poppins", sans-serif;
+}
+
+@theme inline {
+  --color-brand: var(--color-brand);
+  --font-bricolage: var(--font-bricolage);
+  --font-poppins: var(--font-poppins);
 }
 
 @layer base {
