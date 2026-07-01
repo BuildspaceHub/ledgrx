@@ -6,8 +6,8 @@ export default function CreatPasswordPage() {
   return (
     <div className="p-4">
       <div>
-        <BsArrowLeft className="text-[30px] mb-4" />
-        <h1 className="font-bold text-[25px] mb-4">Create A New Password</h1>
+        <BsArrowLeft className="text-[30px] mb-8" />
+        <h1 className="font-bold text-[25px] mb-2">Create A New Password</h1>
         <p className="text-[14px] text-center mb-4">
           Your new password must not be the same as the previous used password.
         </p>
@@ -18,21 +18,21 @@ export default function CreatPasswordPage() {
         <div className="flex items-center bg-[#F0F0F0] p-2">
           <input
             type="password"
-            className="p-2 w-full h-10 rounded-[10px] outline-none bg-[#F0F0F0]"
+            className="p-2 w-full h-[50px] rounded-[10px] outline-none bg-[#F0F0F0]"
           />
-          <FaRegEyeSlash />
+          <FaRegEyeSlash className="text-2xl" />
         </div>
         <span className="block mb-4 text-[13px]">
           Password must be 8 characters
         </span>
 
-        <span className="block">Confirm Password</span>
+        <span className="block text-xl">Confirm Password</span>
         <div className="flex items-center bg-[#F0F0F0] p-2">
           <input
             type="password"
             className="p-2 w-full h-10 rounded-[10px] outline-none bg-[#F0F0F0]"
           />
-          <FaRegEyeSlash />
+          <FaRegEyeSlash className="text-2xl" />
         </div>
         <span className="block mb-4 text-[13px]">
           Both passwords must match.

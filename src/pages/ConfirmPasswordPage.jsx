@@ -1,26 +1,29 @@
 import React from "react";
+import { BiArrowBack } from "react-icons/bi";
+import { BsArrowLeft } from "react-icons/bs";
 
 export default function ConfirmPasswordPage() {
   return (
-    <div className="h-screen flex items-center justify-center p-4">
+    <div className="h-screen  p-4">
       <div>
-        <h2 className="text-2xl font-bold mb-6">Forgot Password</h2>
-        <p className="mb-6">
+        <BsArrowLeft className="text-[30px] font-xl mb-4" />
+        <h2 className="text-2xl font-bold mb-6 text-center">Forgot Password</h2>
+        <p className="text-center mb-8">
           Please enter your email address. You will receive a link to create a
           new password via email
         </p>
 
         {/* email section */}
         <div>
-          <span className="block font-medium mb-4">Email</span>
+          <span className="block font-medium">Your Email account</span>
           <input
             type="email"
-            className="w-full h-8 rounded-xl bg-[#D9D9D9] mb-20 p-4 outline-0"
+            className="w-full h-[50px] rounded-xl bg-[#D9D9D9] mb-4 p-4 outline-0"
           />
         </div>
 
-        <button className="border w-full h-8 rounded-2xl px-4 py-5 flex justify-center items-center bg-[#02AC33] text-[#FFFFFF]">
-          Go to Dashboard
+        <button className="border w-full h-[50px] rounded-2xl px-4 py-5 flex justify-center items-center bg-[#52C218] text-[#F0F0F0]">
+          Submit
         </button>
       </div>
     </div>

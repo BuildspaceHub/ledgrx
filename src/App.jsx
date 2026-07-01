@@ -9,8 +9,8 @@ export default function App() {
     //   <ConfirmEmailPage />
     // </div>
     <div>
-      {/* <ConfirmPasswordPage /> */}
-      <CreatPasswordPage/>
+      <ConfirmPasswordPage />
+      {/* <CreatPasswordPage/> */}
     </div>
   );
 }
