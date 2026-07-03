@@ -4,7 +4,7 @@ import { FaRegEyeSlash } from "react-icons/fa";
 
 export default function CreatPasswordPage() {
   return (
-    <div className="p-4">
+    <form className="p-4">
       <div>
         <BsArrowLeft className="text-[30px] mb-8" />
         <h1 className="font-bold text-[25px] mb-2">Create A New Password</h1>
@@ -42,6 +42,6 @@ export default function CreatPasswordPage() {
       <button className="border bg-[#52C218] text-[#FFFFFF] w-full h-15 p-2 rounded-[10px] ">
         Reset Password
       </button>
-    </div>
+    </form>
   );
 }
