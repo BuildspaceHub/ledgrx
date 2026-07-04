@@ -8,7 +8,7 @@ export default function Splash() {
     }, 4000);
   }, []);
   return (
-    <div className="bg-green-300 h-screen flex justify-center items-center flex-col gap-5">
+    <div className="bg-green-300 h-screen w-screen flex justify-center items-center flex-col gap-5">
       <h3>
         Ledgr
         <span className="text-white text-3xl font-bold mb-2.5 animate-slideIn">
