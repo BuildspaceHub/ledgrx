@@ -8,6 +8,7 @@ import VerifiedEmailPage from "./pages/VerifiedEmailPage";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
 import ConfirmPasswordPage from "./pages/ConfirmPasswordPage";
 import Dashboard from "./components/dashboard";
+import History from "./components/History";
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
       <div className="lg:bg-green-300 h-screen w-screen flex justify-center items-center flex-col">
         <Routes>
           {/* Public Routes */}
-          <Route path="/" element={<Splash />} />
+          <Route path="/splash" element={<Splash />} />
           <Route path="/onboarding" element={<Onboarding />} />
           {/* Authentication Routes */}
           <Route path="/auth/login" element={<Login />} />
@@ -27,7 +28,8 @@ export default function App() {
             element={<ConfirmPasswordPage />}
           />
           <Route path="/auth/user-verified" element={<VerifiedEmailPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/history" element={<History />} />
         </Routes>
       </div>
     </BrowserRouter>

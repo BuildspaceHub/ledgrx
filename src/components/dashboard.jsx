@@ -1,12 +1,8 @@
-import {
-  FaBell,
-  FaEye,
-  FaPlus,
-  FaHome,
-  FaWallet,
-  FaChartBar,
-  FaCog,
-} from "react-icons/fa";
+import { FaBell, FaEye, FaPlus, FaChartBar } from "react-icons/fa";
+import { IoFileTrayOutline } from "react-icons/io5";
+import { TiHome } from "react-icons/ti";
+import { IoSettingsOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const transactions = [
   {
@@ -43,10 +39,10 @@ const transactions = [
 
 export default function Dashboard() {
   return (
-    <div className="bg-gray-100 min-h-full w-full h-full flex justify-center items-center ">
-      <div className="w-full min-h-full p-4 m-auto bg-white relative">
-        {/* Header */}
-        <div className="w-full h-[42px] flex py-4 mt-8 bg-gray-100 justify-between items-center">
+    <div className="bg-gray-100 min-h-full w-full h-full flex flex-col justify-center relative">
+      {/* Header */}
+      <div className="w-full h-[42px] flex py-4 mt-50 bg-gray-100 justify-bottom items-center">
+        <div className="w-[357px] flex py-4 mx-auto bg-gray-100 justify-between items-center">
           <div className="flex p-1 items-center bg-gray-300 gap-3 rounded-2xl">
             <div className="bg-white justifu-center align-middle w-5 h-5 rounded-full">
               <img src="https://i.pravatar.cc/100" alt="profile" />
@@ -62,7 +58,8 @@ export default function Dashboard() {
             <FaBell size={18} />
           </div>
         </div>
-
+      </div>
+      <div className="w-full min-[95vh] pt-2 p-4 m-auto bg-white relative">
         {/* Balance */}
         <div className="w-full h-[103px] mt-4 flex justify-between items-center bg-gray-200 rounded-2xl">
           <div>
@@ -126,23 +123,30 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
+      </div>
 
         {/* Bottom Navigation */}
+      <div className="absolute sticky bottom-[0px] bg-gray-200 z-999 w-full">
+        <div className="flex justify-between items-center w-full mx-auto h-[72px] pt-[12px] pb-[10px] px-[16px]">
+          <Link className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-[46px] bg-white rounded">
+            <TiHome size={22} />
+            <span className="text-xs">Home</span>
+          </Link>
 
-        <div className="absolute sticky bottom-[-10px] bg-gray-200 z-999 w-full h-[80px] rounded-t-2xl pt-4 px-2">
-          <div className="flex justify-between items-center">
-            <div className="flex flex-col items-center text-green-500 h-10 w-11 bg-white rounded"></div>
+          <Link className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded">
+            <FaChartBar size={22} />
+            <span className="text-xs">Statistics</span>
+          </Link>
 
-            <div className="flex flex-col items-center text-gray-400 h-10 w-11 bg-white rounded"></div>
+          <Link to="/history" className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded">
+            <IoFileTrayOutline size={22} />
+            <span className="text-xs">History</span>
+          </Link>
 
-            <button className="w-12 h-12 border-4  border-white rounded-full bg-green-500 text-[13px] text-white flex justify-center items-center shadow-lg -mt-12">
-              <FaPlus size={20} />
-            </button>
-
-            <div className="flex flex-col items-center text-gray-400 h-10 w-11 bg-white rounded"></div>
-
-            <div className="flex flex-col items-center text-gray-400 h-10 w-11 bg-white rounded"></div>
-          </div>
+          <Link className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded">
+            <IoSettingsOutline size={22} />
+            <span className="text-xs">Settings</span>
+          </Link>
         </div>
       </div>
     </div>
