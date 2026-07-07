@@ -10,6 +10,7 @@ const onboardingData = [
     description: "Easily record your income and expenses in one place.",
     subText: "Know where your money goes.",
   },
+
   {
     id: 2,
     image: "/images/OnbAni-2.png",
