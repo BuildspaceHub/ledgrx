@@ -3,12 +3,14 @@
 
 :root {
   --color-brand: #52c218;
+  --color-background: #ffffff;
   --font-bricolage: "Bricolage Grotesque", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 }
 
 @theme inline {
   --color-brand: var(--color-brand);
+  --color-background: var(--color-background);
   --font-bricolage: var(--font-bricolage);
   --font-poppins: var(--font-poppins);
 }
