@@ -1,7 +1,7 @@
 import React from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { FaRegEyeSlash } from "react-icons/fa";
-import { resetPasswordSchema } from "../libs/validators/auth";
+import { resetPasswordSchema } from "../../libs/validators/auth";
 
 export default function CreatePasswordPage() {
   const [password, setPassword] = React.useState("");

@@ -1,12 +1,14 @@
-import React from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Splash() {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     window.location.href = "/onboarding";
-  //   }, 4000);
-  // }, []);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/onboarding");
+    }, 4000);
+  }, []);
 
   return (
     <div className="bg-background min-h-screen flex justify-center items-center flex-col gap-5">

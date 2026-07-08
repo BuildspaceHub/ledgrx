@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
-import Onboarding from "./components/Onboarding";
-import CreatePasswordPage from "./pages/CreatePasswordPage";
-import VerifiedEmailPage from "./pages/VerifiedEmailPage";
-import ConfirmEmailPage from "./pages/ConfirmEmailPage";
-import ConfirmPasswordPage from "./pages/ConfirmPasswordPage";
+import Onboarding from "./pages/Onboarding";
+import CreatePasswordPage from "./pages/auth/CreatePasswordPage";
+import VerifiedEmailPage from "./pages/auth/VerifiedEmailPage";
+import ConfirmEmailPage from "./pages/auth/ConfirmEmailPage";
+import ConfirmPasswordPage from "./pages/auth/ConfirmPasswordPage";
 import Splash from "./pages/Splash";
 
 export default function App() {
