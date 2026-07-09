@@ -125,7 +125,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-        {/* Bottom Navigation */}
+      {/* Bottom Navigation */}
       <div className="absolute sticky bottom-[0px] bg-gray-200 z-999 w-full">
         <div className="flex justify-between items-center w-full mx-auto h-[72px] pt-[12px] pb-[10px] px-[16px]">
           <Link className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-[46px] bg-white rounded">
@@ -138,7 +138,10 @@ export default function Dashboard() {
             <span className="text-xs">Statistics</span>
           </Link>
 
-          <Link to="/history" className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded">
+          <Link
+            to="/history"
+            className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded"
+          >
             <IoFileTrayOutline size={22} />
             <span className="text-xs">History</span>
           </Link>
