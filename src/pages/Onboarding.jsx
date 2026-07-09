@@ -32,7 +32,7 @@ export default function Onboarding() {
       </div>
 
       <main className="flex-1 flex flex-col justify-center items-center my-auto md:flex-row md:gap-8 md:w-full">
-        <div className="max-w-64 max-h-64 flex items-center justify-center overflow-hidden mb-6 md:mb-0 md:w-1/2">
+        <div className="max-w-64 h-64 flex items-center justify-center overflow-hidden mb-6 md:mb-0 md:w-1/2">
           <img
             src={currentScreen.image}
             alt={currentScreen.title}
@@ -41,7 +41,7 @@ export default function Onboarding() {
         </div>
 
         <div className="flex flex-col md:items-start md:text-left md:w-1/2">
-          <h1 className="text-xl font-semibold text-gray-900 mb-3 tracking-tight">
+          <h1 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">
             {currentScreen.title}
           </h1>
           <p className="text-[12px] text-gray-500 mb-2 max-w-xs md:max-w-none">
