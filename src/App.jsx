@@ -6,6 +6,8 @@ import CreatePasswordPage from "./pages/auth/CreatePasswordPage";
 import VerifiedEmailPage from "./pages/auth/VerifiedEmailPage";
 import ConfirmEmailPage from "./pages/auth/ConfirmEmailPage";
 import ConfirmPasswordPage from "./pages/auth/ConfirmPasswordPage";
+import Dashboard from "./pages/dashboard";
+import History from "./pages/History";
 import Splash from "./pages/Splash";
 
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
         <Route path="/auth/verify-email" element={<ConfirmEmailPage />} />
         <Route path="/auth/forgot-password" element={<ConfirmPasswordPage />} />
         <Route path="/auth/user-verified" element={<VerifiedEmailPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/history" element={<History />} />
       </Routes>
     </BrowserRouter>
   );

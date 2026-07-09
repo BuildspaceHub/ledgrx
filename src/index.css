@@ -18,7 +18,6 @@
 @layer base {
   body {
     font-family: var(--font-poppins);
-    max-width: 1440px;
   }
 }
 

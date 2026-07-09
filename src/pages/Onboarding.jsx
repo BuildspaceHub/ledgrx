@@ -1,63 +1,74 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { onboardingData } from "../constants";
+import StepIndicators from "../components/StepIndicators";
 
 export default function Onboarding() {
-  const [currentIndex, setCorrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
 
+  const isLastScreen = currentIndex === onboardingData.length - 1;
+  const currentScreen = onboardingData[currentIndex];
+
   const handleNext = () => {
-    if (currentIndex < onboardingData.length - 1) {
-      setCorrentIndex(currentIndex + 1);
+    if (!isLastScreen) {
+      setCurrentIndex((prev) => prev + 1);
     } else {
       navigate("/auth/login");
     }
   };
 
-  const currentScreen = onboardingData[currentIndex];
-
   return (
-    <div className="text-center border flex flex-col h-screen bg-background lg:bg-green-50 justify-between m-4 md:my-1 md:mx-2 md:flex-wrap md:border-2 md:border-green-200 md:rounded-4xl md:h-full md:flex lg:gap-10 md:shadow-sm md:hover:shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] md:flex-row md:justify-center md:items-center md:w-70% md:px-8 md:py-10 md:relative lg:mx-40 lg:my-5 lg:">
-      {/* {steps[count - 1]} */}
-      <button className="self-end text-brand font-semibold text-sm mt-10 mr-6 md:absolute md:top-0 md:right-10 md:font-semibold md:text-[18px] ">
-        skip
-      </button>
-
-      <img
-        src={currentScreen.image}
-        alt=""
-        className="w-100%  p-6 mt-2 flex flex-col mb-0 md:w-67.5 md:[300px] lg:w-112.5 lg:h-125 "
-      />
-
-      <div className="flex flex-col items-start w-100% mt-0 md:w-40% md:h-100%">
-        <h1 className="text-[25px] mt-20 text-start lg:text-[25px] md:mb-6  ">
-          {currentScreen.title}
-        </h1>
-        <p className="text-[15px] w-75 text-start pt-2 md:text-[18px] md:w-100% md:mb-6">
-          {currentScreen.description}
-        </p>
-        <p className="text-[16px] font-normal text-brand pt-4 md:text-[19px]">
-          {currentScreen.subText}
-        </p>
-        <div className="flex flex-col gap-6 mt-8 mx-auto">
-          <span className="flex justify-center gap-1">
-            {onboardingData.map((_, index) => (
-              <div
-                key={index}
-                className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                  index === currentIndex ? "bg-brand" : "bg-gray-300"
-                } `}
-              />
-            ))}
-          </span>
-        </div>
-        <button
-          onClick={handleNext}
-          className="w-full bg-brand rounded text-background text-[13px] py-4 mt-8"
-        >
-          {currentIndex === onboardingData.length - 1 ? "Get Started" : "Next"}
-        </button>
+    <div className="min-h-screen p-4 flex flex-col justify-between max-w-md mx-auto md:max-w-2xl md:justify-center">
+      <div className="w-full text-right">
+        {!isLastScreen && (
+          <Link
+            to="/auth/login"
+            className="text-xs font-medium text-brand hover:underline transition-all"
+          >
+            Skip
+          </Link>
+        )}
       </div>
+
+      <main className="flex-1 flex flex-col justify-center items-center my-auto md:flex-row md:gap-8 md:w-full">
+        <div className="max-w-64 max-h-64 flex items-center justify-center overflow-hidden mb-6 md:mb-0 md:w-1/2">
+          <img
+            src={currentScreen.image}
+            alt={currentScreen.title}
+            className="w-full h-full object-contain transition-all duration-300 transform object-top scale-80"
+          />
+        </div>
+
+        <div className="flex flex-col md:items-start md:text-left md:w-1/2">
+          <h1 className="text-xl font-semibold text-gray-900 mb-3 tracking-tight">
+            {currentScreen.title}
+          </h1>
+          <p className="text-[12px] text-gray-500 mb-2 max-w-xs md:max-w-none">
+            {currentScreen.description}
+          </p>
+          {currentScreen.subText && (
+            <p className="text-[12px] font-normal text-brand mb-6">
+              {currentScreen.subText}
+            </p>
+          )}
+
+          <StepIndicators
+            total={onboardingData.length}
+            current={currentIndex}
+          />
+        </div>
+      </main>
+
+      <footer className="w-full mt-6">
+        <button
+          type="button"
+          onClick={handleNext}
+          className="w-full bg-brand hover:bg-brand-dark text-white font-medium text-sm py-3 px-4 rounded-lg shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+        >
+          {isLastScreen ? "Get Started" : "Next"}
+        </button>
+      </footer>
     </div>
   );
 }
