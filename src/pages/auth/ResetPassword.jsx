@@ -3,7 +3,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { resetPasswordSchema } from "../../libs/validators/auth";
 
-export default function CreatePasswordPage() {
+export default function ResetPasswordPage() {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [errorMessages, setErrorMessages] = React.useState({});
