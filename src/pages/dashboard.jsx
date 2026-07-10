@@ -9,7 +9,7 @@ const transactions = [
     id: 1,
     title: "Salary",
     date: "20 Jul",
-    amount: "+30,000",
+    amount: "30,000",
     income: true,
   },
   {
@@ -161,7 +161,8 @@ export default function Dashboard() {
       </div>
 
       {/* Bottom Navigation */}
-      {/* <div className="absolute sticky bottom-[0px] bg-gray-200 z-999 w-full">
+      <div className="absolute sticky bottom-[0px] bg-gray-200 z-999 w-full">
+
         <div className="flex justify-between items-center w-full mx-auto h-[72px] pt-[12px] pb-[10px] px-[16px]">
           <Link className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-[46px] bg-white rounded">
             <TiHome size={22} />
@@ -186,7 +187,7 @@ export default function Dashboard() {
             <span className="text-xs">Settings</span>
           </Link>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export const forgotPasswordSchema = Joi.object({
 export const resetPasswordSchema = Joi.object({
   password: Joi.string().min(8).required().messages({
     "string.min": "Password must be at least 8 characters long",
-    "any.required": "Password is required",
+    "string.empty": "Password is required",
   }),
   confirmPassword: Joi.string().valid(Joi.ref("password")).required().messages({
     "any.only": "Passwords do not match",

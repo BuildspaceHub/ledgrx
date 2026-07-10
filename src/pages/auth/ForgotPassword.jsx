@@ -55,7 +55,7 @@ export default function ForgotPasswordPage() {
             <span className="text-error text-[12px]">{error?.email}</span>
           </div>
 
-          <button className="w-full h-12.5 rounded-[10px] px-4 py-5 flex justify-center items-center bg-brand text-white">
+          <button className="w-full h-12.5 rounded-[10px] px-4 py-5 flex justify-center items-center bg-brand text-white">vbv
             Request Link
           </button>
         </form>
