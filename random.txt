@@ -1,0 +1,18 @@
+ // <div
+            //   key={index}
+            //   className="flex justify-between items-center bg-gray-300 p-2 rounded-2xl mb-2"
+            // >
+            //   <div>
+            //     <h3 className="font-bold text-xl h-7 text-gray-300 w-24 bg-white rounded">
+            //       title
+            //     </h3>
+
+            //     <p className="text-gray-200 h-5 mt-2 w-15 bg-white rounded">
+            //       date
+            //     </p>
+            //   </div>
+
+            //   <span className="text-green-200 h-5 w-15 bg-white rounded">
+            //     amount
+            //   </span>
+            // </div>

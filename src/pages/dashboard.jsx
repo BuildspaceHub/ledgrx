@@ -8,7 +8,7 @@ const transactions = [
   {
     title: "Salary",
     date: "20 Jul",
-    amount: "+30,000",
+    amount: "30,000",
     income: true,
   },
   {
@@ -78,7 +78,6 @@ export default function Dashboard() {
         </div>
 
         {/* Income & Expense */}
-
         <div className="w-full h-[81px] justify-between items-center grid grid-cols-2 mt-4 rounded-2xl bg-gray-200">
           <div>
             <p className="text-gray-400">Income</p>
@@ -94,9 +93,8 @@ export default function Dashboard() {
         </div>
 
         {/* Transactions */}
-
         <div className="mt-4 flex justify-between">
-          <h2 className="font-normal text-[10px] ">Transactions</h2>
+          <h2 className="font-normal text-xl ">Transactions</h2>
 
           <button className="text-[10px] ">View All</button>
         </div>
@@ -126,7 +124,7 @@ export default function Dashboard() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="absolute sticky bottom-[0px] bg-gray-200 z-999 w-full">
+      <div className="sticky bottom-[0px] bg-gray-200 z-999 w-full">
         <div className="flex justify-between items-center w-full mx-auto h-[72px] pt-[12px] pb-[10px] px-[16px]">
           <Link className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-[46px] bg-white rounded">
             <TiHome size={22} />
