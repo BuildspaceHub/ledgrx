@@ -3,13 +3,15 @@
 
 :root {
   --color-brand: #52c218;
-  --color-error: #ff4541;
+  --color-background: #ffffff;
+  --color-error: #ff4540;
   --font-bricolage: "Bricolage Grotesque", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 }
 
 @theme inline {
   --color-brand: var(--color-brand);
+  --color-background: var(--color-background);
   --color-error: var(--color-error);
   --font-bricolage: var(--font-bricolage);
   --font-poppins: var(--font-poppins);
@@ -18,7 +20,6 @@
 @layer base {
   body {
     font-family: var(--font-poppins);
-    max-width: 1440px;
   }
 }
 
