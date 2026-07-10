@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { forgotPasswordSchema } from "../libs/validations/auth";
 
 export default function ConfirmPasswordPage() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+
+  function handleForgotPssword(e) {
+    e.preventDefault();
+    setError("");
+
+    const { error } = forgotPasswordSchema.validate({ email: email });
+    console.log(error.details[0].message);
+    // setError(error.details[0].message);
+
+    console.log(email);
+  }
+
   return (
     <div className="h-screen flex items-center justify-center p-4">
       <div>
@@ -11,17 +26,26 @@ export default function ConfirmPasswordPage() {
         </p>
 
         {/* email section */}
-        <div>
-          <span className="block font-medium mb-4">Email</span>
-          <input
-            type="email"
-            className="w-full h-8 rounded-xl bg-[#D9D9D9] mb-20 p-4 outline-0"
-          />
-        </div>
-
-        <button className="border w-full h-8 rounded-2xl px-4 py-5 flex justify-center items-center bg-[#02AC33] text-[#FFFFFF]">
-          Go to Dashboard
-        </button>
+        <form onSubmit={handleForgotPssword}>
+          <div className="mb-10">
+            <label htmlFor="email" className="block font-medium mb-2">
+              Email
+            </label>
+            <input
+              id="email"
+              type="text"
+              value={email}
+              className={`w-full h-[50px] rounded-[10px] bg-[#D9D9D9] mb-1 p-4 focus:outline-1 focus:outline-brand active:outline-1 active:outline-green-500 ${
+                error ? "outline-1 outline-red-600" : "outline-0"
+              }`}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <span className="text-error text-[12px]">{error}</span>
+          </div>
+          <button className="border w-full h-10 rounded-[10px] px-4 py-5 flex justify-center items-center bg-brand text-[#FFFFFF]">
+            Send Link
+          </button>
+        </form>
       </div>
     </div>
   );
