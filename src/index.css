@@ -3,8 +3,10 @@
 
 :root {
   --color-brand: #52c218;
+
   --color-background: #ffffff;
   --color-error: #ff4540;
+
   --font-bricolage: "Bricolage Grotesque", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 }
