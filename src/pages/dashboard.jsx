@@ -6,30 +6,35 @@ import { Link } from "react-router-dom";
 
 const transactions = [
   {
+    id: 1,
     title: "Salary",
     date: "20 Jul",
     amount: "30,000",
     income: true,
   },
   {
+    id: 2,
     title: "Transportation",
     date: "16 Jul",
     amount: "-7,200",
     income: false,
   },
   {
+    id: 3,
     title: "Food",
     date: "16 Jul",
     amount: "-11,000",
     income: false,
   },
   {
+    id: 4,
     title: "Internet",
     date: "15 Jul",
     amount: "-3,000",
     income: false,
   },
   {
+    id: 5,
     title: "Medication",
     date: "11 Jul",
     amount: "-5,500",
@@ -39,10 +44,10 @@ const transactions = [
 
 export default function Dashboard() {
   return (
-    <div className="bg-gray-100 min-h-full w-full h-full flex flex-col justify-center relative">
+    <div className="bg-gray-300 min-h-dvh w-full flex flex-col relative">
       {/* Header */}
-      <div className="w-full h-[42px] flex py-4 mt-50 bg-gray-100 justify-bottom items-center">
-        <div className="w-[357px] flex py-4 mx-auto bg-gray-100 justify-between items-center">
+      <div className=" w-full h-10.5 flex py-4 justify-bottom items-center">
+        <div className="w-89.25 flex py-4 mx-auto bg-gray-100 justify-between items-center">
           <div className="flex p-1 items-center bg-gray-300 gap-3 rounded-2xl">
             <div className="bg-white justifu-center align-middle w-5 h-5 rounded-full">
               <img src="https://i.pravatar.cc/100" alt="profile" />
@@ -59,9 +64,9 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="w-full min-[95vh] pt-2 p-4 m-auto bg-white relative">
+      <div className="w-full min-[95vh] pt-2 p-4 relative">
         {/* Balance */}
-        <div className="w-full h-[103px] mt-4 flex justify-between items-center bg-gray-200 rounded-2xl">
+        <div className="w-full h-25.75 mt-4 flex justify-between items-center bg-gray-200 rounded-2xl">
           <div>
             <p className="text-gray-400">Current balance</p>
 
@@ -78,7 +83,8 @@ export default function Dashboard() {
         </div>
 
         {/* Income & Expense */}
-        <div className="w-full h-[81px] justify-between items-center grid grid-cols-2 mt-4 rounded-2xl bg-gray-200">
+
+        <div className="w-full h-20.25 justify-between items-center grid grid-cols-2 mt-4 rounded-2xl bg-gray-200">
           <div>
             <p className="text-gray-400">Income</p>
 
@@ -93,13 +99,44 @@ export default function Dashboard() {
         </div>
 
         {/* Transactions */}
-        <div className="mt-4 flex justify-between">
-          <h2 className="font-normal text-xl ">Transactions</h2>
 
-          <button className="text-[10px] ">View All</button>
+        <div className=" mt-4">
+          <div className="rounded-[10px] p-2">
+            <div className=" flex justify-between items-center mb-4">
+              <h2 className="font-normal text-[10px] ">Transactions</h2>
+
+              <button className="text-[10px] ">View All</button>
+            </div>
+
+            <div className="flex flex-col gap-4 ">
+              {transactions.map((transaction) => (
+                <div
+                  className="w-full flex justify-between items-center bg-background p-2.5 rounded-lg"
+                  key={transaction.id}
+                >
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-[14px]">
+                      {transaction.title}
+                    </span>
+                    <span className="font-normal text-[12px]">
+                      {transaction.date}
+                    </span>
+                  </div>
+
+                  <span
+                    className={`${
+                      transaction.income ? "text-brand" : "text-error"
+                    }`}
+                  >
+                    {transaction.amount}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="mt-2 space-y-2">
+        {/* <div className="mt-2 space-y-2">
           {transactions.map((item, index) => (
             <div
               key={index}
@@ -120,11 +157,12 @@ export default function Dashboard() {
               </span>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Bottom Navigation */}
-      <div className="sticky bottom-[0px] bg-gray-200 z-999 w-full">
+      <div className="absolute sticky bottom-[0px] bg-gray-200 z-999 w-full">
+
         <div className="flex justify-between items-center w-full mx-auto h-[72px] pt-[12px] pb-[10px] px-[16px]">
           <Link className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-[46px] bg-white rounded">
             <TiHome size={22} />

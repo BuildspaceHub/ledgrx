@@ -6,14 +6,13 @@ import { MdEmail } from "react-icons/md";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState({});
+  const [error, setError] = useState("");
 
   function requestPasswordLink(e) {
     e.preventDefault();
-    setError({});
+    setError("");
     // validate email
     const { error } = forgotPasswordSchema.validate({ email });
-    console.log(error.details);
 
     const formattedError = FormatErrorMessages(error);
     setError(formattedError);
@@ -39,7 +38,9 @@ export default function ForgotPasswordPage() {
               Your Email Account
             </label>
             <div
-              className={`flex items-center rounded-[10px] bg-[#D9D9D9] overflow-hidden ${error["email"] ? "outline-1 outline-error" : ""} focus:outline-2 focus:outline-brand`}
+              className={`flex items-center rounded-[10px] bg-[#D9D9D9] overflow-hidden ${
+                error?.email ? "outline-1 outline-error" : ""
+              } focus:outline-2 focus:outline-brand`}
             >
               <MdEmail className="size-6 mx-2 text-brand" />
               <input
@@ -51,7 +52,7 @@ export default function ForgotPasswordPage() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <span className="text-error text-[12px]">{error["email"]}</span>
+            <span className="text-error text-[12px]">{error?.email}</span>
           </div>
 
           <button className="w-full h-12.5 rounded-[10px] px-4 py-5 flex justify-center items-center bg-brand text-white">vbv
