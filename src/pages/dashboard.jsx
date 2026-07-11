@@ -3,6 +3,8 @@ import { IoFileTrayOutline } from "react-icons/io5";
 import { TiHome } from "react-icons/ti";
 import { IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import CurrentBalanceCard from "../components/CurrentBalanceCard";
+import SummaryCard from "../components/SummaryCard";
 
 const transactions = [
   {
@@ -66,38 +68,12 @@ export default function Dashboard() {
       </div>
       <div className="w-full min-[95vh] pt-2 p-4 relative">
         {/* Balance */}
-        <div className="w-full h-25.75 mt-4 flex justify-between items-center bg-gray-200 rounded-2xl">
-          <div>
-            <p className="text-gray-400">Current balance</p>
-
-            <div className="flex items-center gap-3">
-              <h1 className="text-4xl font-bold text-red-300">Balance</h1>
-
-              <FaEye className="text-gray-400" />
-            </div>
-          </div>
-
-          <button className="w-9 h-9 mr-2 text-[10px] rounded-full bg-green-500 text-white flex justify-center items-center">
-            <FaPlus />
-          </button>
-        </div>
+        <CurrentBalanceCard />
 
         {/* Income & Expense */}
+        <SummaryCard />
 
-        <div className="w-full h-20.25 justify-between items-center grid grid-cols-2 mt-4 rounded-2xl bg-gray-200">
-          <div>
-            <p className="text-gray-400">Income</p>
-
-            <h3 className="text-green-200 font-bold text-2xl">↑ balance</h3>
-          </div>
-
-          <div className="text-right ">
-            <p className="text-gray-400">Expense</p>
-
-            <h3 className="text-red-200 font-bold text-2xl">↓ balance</h3>
-          </div>
-        </div>
-
+        
         {/* Transactions */}
 
         <div className=" mt-4">
@@ -162,7 +138,6 @@ export default function Dashboard() {
 
       {/* Bottom Navigation */}
       <div className="absolute sticky bottom-[0px] bg-gray-200 z-999 w-full">
-
         <div className="flex justify-between items-center w-full mx-auto h-[72px] pt-[12px] pb-[10px] px-[16px]">
           <Link className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-[46px] bg-white rounded">
             <TiHome size={22} />
