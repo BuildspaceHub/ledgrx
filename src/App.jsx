@@ -7,6 +7,8 @@ import CreatePasswordPage from "./pages/CreatePasswordPage";
 import VerifiedEmailPage from "./pages/VerifiedEmailPage";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
 import ConfirmPasswordPage from "./pages/ConfirmPasswordPage";
+import CurrentBalancePage from "./pages/auth/CurrentBalancePage";
+
 
 export default function App() {
   return (
@@ -22,6 +24,7 @@ export default function App() {
         <Route path="/auth/verify-email" element={<ConfirmEmailPage />} />
         <Route path="/auth/forgot-password" element={<ConfirmPasswordPage />} />
         <Route path="/auth/user-verified" element={<VerifiedEmailPage />} />
+        <Route path="/auth/current-balance" element={<CurrentBalancePage />} />
       </Routes>
     </BrowserRouter>
   );
