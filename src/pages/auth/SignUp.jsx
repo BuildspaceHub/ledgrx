@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { z } from "zod";
+import { useNavigate } from "react-router-dom";
 
 const signupSchema = z.object({
   fullName: z.string().min(1, "Fullname required"),
@@ -18,19 +19,26 @@ function SignUp() {
   });
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (isLoading) return;
 
+    setIsLoading(true);
     const result = signupSchema.safeParse(formData);
     if (!result.success) {
       setErrors(result.error.flatten((issue) => issue.message).fieldErrors);
       setSuccessMessage("");
+      setIsLoading(false);
       return;
     }
 
     setErrors({});
     setSuccessMessage("Sign-up successful! Welcome aboard.");
+    navigate("/dashboard");
     setFormData({ fullName: "", email: "", password: "" });
   };
   return (
@@ -107,11 +115,17 @@ function SignUp() {
           )}
         </div>
 
-        <div className="w-full cursor-pointer text-center rounded-[10px] mb-6 bg-green-500">
-          <button className="text-white p-3 items-center text-sm">
-            Sign up{" "}
-          </button>
-        </div>
+        <button
+          type="submit"
+          disabled={isLoading}
+          className={`w-full p-3 text-sm text-white rounded-[10px] mb-6 transition-colors ${
+            isLoading
+              ? "bg-green-300 cursor-not-allowed"
+              : "bg-green-500 cursor-pointer"
+          }`}
+        >
+          {isLoading ? "Signing up..." : "Sign up"}
+        </button>
 
         <div className="flex justify-center items-center">
           <hr className="w-17.5" />

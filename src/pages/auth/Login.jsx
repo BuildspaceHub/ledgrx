@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import joi from "joi";
 
 const loginSchema = joi.object({
@@ -17,13 +18,19 @@ const loginSchema = joi.object({
 });
 
 function Login() {
+  const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (isLoading) return;
+
+    setIsLoading(true);
 
     const { error } = loginSchema.validate(formData, { abortEarly: false });
 
@@ -32,8 +39,8 @@ function Login() {
       error.details.forEach((err) => {
         validationErrors[err.path[0]] = [err.message];
       });
-
       setErrors(validationErrors);
+      setIsLoading(false);
       return;
     }
 
@@ -42,8 +49,10 @@ function Login() {
       formData.password === "pass123"
     ) {
       setErrors({});
+      navigate("/dashboard");
     } else {
       setErrors({ auth: ["The email or password you entered is incorrect."] });
+      setIsLoading(false);
     }
   };
   return (
@@ -93,9 +102,18 @@ function Login() {
         <p className="text-start pb-6 text-sm pt-3.25 font-normal text-green-500">
           Forgot password
         </p>
-        <div className="w-full text-center cursor-pointer rounded-[10px] mb-6 bg-green-500">
-          <button className="text-white p-3 text-sm">Log In </button>
-        </div>
+
+        <button
+          type="submit"
+          disabled={isLoading}
+          className={`w-full p-3 text-sm text-white rounded-[10px] mb-6 transition-colors ${
+            isLoading
+              ? "bg-green-300 cursor-not-allowed"
+              : "bg-green-500 cursor-pointer"
+          }`}
+        >
+          {isLoading ? "Logging in..." : "Log In"}
+        </button>
         <div className="w-full flex items-center shadow-[0px_4px_4px_0px_#0000001A] gap-9 mb-3.5 justify-center rounded-[10px]  bg-white">
           <a href="#" className="flex">
             <img src="/images/google.svg" alt="google" />
