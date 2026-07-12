@@ -2,22 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import joi from "joi";
+import formatErrorMessages from "../../libs/formatters/auth";
+import { loginSchema } from "../../libs/validations/auth";
+import FormField from "../../components/FormField";
+import { CiLock, CiMail } from "react-icons/ci";
+import Button from "../../components/Button";
+import { FiLoader } from "react-icons/fi";
 
-const loginSchema = joi.object({
-  email: joi
-    .string()
-    .email({ tlds: { allow: false } })
-    .required()
-    .messages({
-      "string.empty": "email required",
-      "string.email": "invalid email",
-    }),
-  password: joi.string().required().messages({
-    "string.empty": "password required",
-  }),
-});
-
-function Login() {
+export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -25,100 +17,80 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (isLoading) return;
-
     setIsLoading(true);
 
     const { error } = loginSchema.validate(formData, { abortEarly: false });
-
     if (error) {
-      const validationErrors = {};
-      error.details.forEach((err) => {
-        validationErrors[err.path[0]] = [err.message];
-      });
+      const validationErrors = formatErrorMessages(error);
       setErrors(validationErrors);
       setIsLoading(false);
       return;
     }
-
-    if (
-      formData.email === "johndoe@email.com" &&
-      formData.password === "pass123"
-    ) {
-      setErrors({});
-      navigate("/dashboard");
-    } else {
-      setErrors({ auth: ["The email or password you entered is incorrect."] });
-      setIsLoading(false);
-    }
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="mt-23.25 px-10 w-[384px]">
-        <p className=" text-2xl font-semibold text-center pb-4">Welcome Back</p>
-        <div className="flex justify-center pb-5.25">
-          <p className="text-sm text-center w-61.5">
+    <div className="p-5 min-h-dvh flex items-center">
+      <div className="w-full max-w-150">
+        <div className="text-center mb-5.25">
+          <h1 className=" text-3xl font-bold mb-3">Welcome Back!</h1>
+          <p className="text-sm">
             Sign in to manage your expenses and stay on top of your finances.
           </p>
         </div>
-        <div className="flex flex-col pb-4">
-          <label className="text-start text-sm pb-1">Email</label>
-          <input
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            className={`p-2 bg-[#D9D9D9] text-base outline-none rounded-lg border ${
-              errors.email ? "border-red-500" : "border-gray-300"
+        <form onSubmit={handleSubmit} className="mb-6">
+          <div className="flex flex-col gap-1.5">
+            <FormField
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Johndoe@example.com"
+              value={formData.email}
+              onChange={handleChange}
+              errors={errors}
+              Icon={CiMail}
+            />
+            <FormField
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="John********"
+              value={formData.password}
+              onChange={handleChange}
+              errors={errors}
+              Icon={CiLock}
+            />
+          </div>
+          <p className="text-start mb-6 text-sm font-normal text-brand">
+            Forgot password?
+          </p>
+          <Button
+            disabled={isLoading}
+            className={`w-full transition-colors ${
+              isLoading
+                ? "bg-green-300 cursor-not-allowed"
+                : "bg-brand cursor-pointer"
             }`}
-            placeholder="johndoe@email.com"
-          />
-          {errors.email && (
-            <span className="text-red-600 text-xs mt-1">{errors.email[0]}</span>
-          )}
-        </div>
-        <div className="flex flex-col ">
-          <label className="text-start pb-1 text-sm">Password</label>
-          <input
-            type="password"
-            value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-            className={`p-2 bg-[#D9D9D9] text-base outline-none rounded-lg border ${
-              errors.password ? "border-red-500" : "border-gray-300"
-            }`}
-            placeholder="******"
-          />
-          {errors.password && (
-            <span className="text-red-600 text-xs mt-1">
-              {errors.password[0]}
-            </span>
-          )}
-        </div>
-        <p className="text-start pb-6 text-sm pt-3.25 font-normal text-green-500">
-          Forgot password
-        </p>
+          >
+            {isLoading ? <FiLoader className="animate-spin" /> : "Log In"}
+          </Button>
+        </form>
 
-        <button
-          type="submit"
-          disabled={isLoading}
-          className={`w-full p-3 text-sm text-white rounded-[10px] mb-6 transition-colors ${
-            isLoading
-              ? "bg-green-300 cursor-not-allowed"
-              : "bg-green-500 cursor-pointer"
-          }`}
-        >
-          {isLoading ? "Logging in..." : "Log In"}
-        </button>
-        <div className="w-full flex items-center shadow-[0px_4px_4px_0px_#0000001A] gap-9 mb-3.5 justify-center rounded-[10px]  bg-white">
+        <div className="w-full flex items-center shadow-[0px_4px_4px_0px_#0000001A] gap-9 mb-3.5 justify-center rounded-[10px] bg-white">
           <a href="#" className="flex">
             <img src="/images/google.svg" alt="google" />
             <span className="text-black p-3 items-center text-sm">
-              Continue with Google{" "}
+              Continue with Google
             </span>
           </a>
         </div>
@@ -139,8 +111,6 @@ function Login() {
           </p>
         </div>
       </div>
-    </form>
+    </div>
   );
 }
-
-export default Login;

@@ -1,9 +1,10 @@
 import React from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { resetPasswordSchema } from "../../libs/validators/auth";
 import { HiOutlineLockClosed } from "react-icons/hi";
 import formatErrorMessages from "../../libs/formatters/auth";
+import FormField from "../../components/FormField";
+import { resetPasswordSchema } from "../../libs/validations/auth";
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = React.useState("");
@@ -31,7 +32,7 @@ export default function ResetPasswordPage() {
   return (
     <div className="min-h-dvh p-4">
       <BsArrowLeft className="text-[30px] mb-10" />
-      <div>
+      <div className="text-center">
         <h1 className="font-bold text-[25px] mb-4">Create A New Password</h1>
         <p className="text-[14px] text-center mb-4">
           Your new password must not be the same as the previous used password.
@@ -39,60 +40,22 @@ export default function ResetPasswordPage() {
       </div>
 
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="password" className="block font-medium mb-1">
-            New Password
-          </label>
-          <div
-            className={`relative flex items-center rounded-[10px] bg-[#D9D9D9] overflow-hidden ${error?.email ? "outline-1 outline-error" : ""} focus:outline-2 focus:outline-brand`}
-          >
-            <HiOutlineLockClosed className="size-6 mx-2 text-brand" />
-            <input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              value={password}
-              placeholder="johndoe@example.com"
-              className={`w-full h-12.5 pr-4 pl-1 outline-0`}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-              onClick={() => setShowPassword(!showPassword)}
-              type="button"
-              className="absolute right-1 top-1/2 -translate-1/2"
-            >
-              {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-            </button>
-          </div>
-          <span className="text-error text-[12px]">{error?.password}</span>
-        </div>
-        <div>
-          <label htmlFor="password" className="block font-medium mb-1">
-            Confirm Password
-          </label>
-          <div
-            className={`relative flex items-center rounded-[10px] bg-[#D9D9D9] overflow-hidden ${error?.confirmPassword ? "outline-1 outline-error" : ""} focus:outline-2 focus:outline-brand`}
-          >
-            <HiOutlineLockClosed className="size-6 mx-2 text-brand" />
-            <input
-              id="password"
-              type="password"
-              value={confirmPassword}
-              placeholder="johndoe@example.com"
-              className={`w-full h-12.5 pr-4 pl-1 outline-0`}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <button
-              onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-              type="button"
-              className="absolute right-1 top-1/2 -translate-1/2"
-            >
-              {showCurrentPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-            </button>
-          </div>
-          <span className="text-error text-[12px]">
-            {error?.confirmPassword}
-          </span>
-        </div>
+        <FormField
+          type="password"
+          label="New Password"
+          placeholder="Enter your new password"
+          error={error}
+          value={password}
+          onChange={setPassword}
+        />
+        <FormField
+          type="password"
+          label="Confirm Password"
+          placeholder="Confrim your password"
+          error={error}
+          value={confirmPassword}
+          onChange={setConfirmPassword}
+        />
 
         <button className="border bg-brand text-background w-full h-12.5 p-2 rounded-[10px] ">
           Reset Password

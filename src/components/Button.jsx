@@ -1,9 +1,16 @@
 import React from "react";
+import { cn } from "../libs/utils";
 
-export default function Button({ label }) {
+export default function Button({ children, className, ...props }) {
   return (
-    <button className="bg-[#52C218] w-full h-12.5 rounded-[10px] font-normal text-[14px] text-white shadow-sm shadow-[#000000]/10">
-      {label}
+    <button
+      className={cn(
+        `bg-brand w-full h-12.5 rounded-[10px] font-semibold text-[14px] text-white shadow-sm shadow-[#000000]/10`,
+        className,
+      )}
+      {...props}
+    >
+      {children}
     </button>
   );
 }

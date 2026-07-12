@@ -5,7 +5,7 @@ export default function BackButton() {
   const navigate = useNavigate();
   return (
     <button onClick={() => navigate(-1)}>
-      <FaArrowLeftLong />
+      <BsArrowLeft />
     </button>
   );
 }
