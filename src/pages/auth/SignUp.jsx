@@ -40,7 +40,7 @@ export default function SignUp() {
         setIsLoading(false);
         return;
       }
-      
+
       setFormData({ fullName: "", email: "", password: "" });
       navigate("/dashboard");
     } catch (error) {
@@ -52,7 +52,7 @@ export default function SignUp() {
 
   return (
     <div className="p-5 min-h-dvh flex items-center justify-center">
-      <div className="w-full max-w-150">
+      <div className="w-full max-w-150 mt-5">
         <div className="text-center mb-5.25">
           <h1 className=" text-3xl font-semibold mb-3">
             Join us on Ledgr<span className="text-brand">X</span>!
@@ -116,36 +116,35 @@ export default function SignUp() {
 
         <div className="flex justify-center items-center gap-1">
           <hr className="w-full" />
-          <p className="text-[14px] px-1 text-nowrap">Or login in with </p>
+          <p className="text-[14px] px-1 text-nowrap text-gray-500">
+            Or login in with
+          </p>
           <hr className="w-full" />
         </div>
 
         <div className="flex items-center w-full mt-6 gap-4  justify-center">
           <a href="#" className="text-black  text-sm">
             <img
-              className="w-7.5 h-7.5"
+              className="w-5.5 h-5.5"
               src="/images/google.svg"
               alt="google"
             />
           </a>
-
           <a href="#" className=" text-black  text-sm">
             <img
-              className="w-7.5 h-7.5"
+              className="w-5.5 h-5.5"
               src="/images/apple.svg"
               alt="apple icon"
             />
           </a>
         </div>
 
-        <div className="mt-4 text-center">
-          <p className="text-sm font-normal">
-            Already have an account?
-            <Link to="/auth/login">
-              <span className="text-brand ml-1">Log In</span>
-            </Link>
-          </p>
-        </div>
+        <p className="text-xs font-normal mt-8 text-center">
+          Already have an account?
+          <Link to="/auth/login">
+            <span className="text-brand ml-1">Log In</span>
+          </Link>
+        </p>
       </div>
     </div>
   );

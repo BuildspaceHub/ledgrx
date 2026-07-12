@@ -48,7 +48,7 @@ export default function Login() {
 
   return (
     <div className="p-5 min-h-dvh flex items-center justify-center">
-      <div className="w-full max-w-150">
+      <div className="w-full max-w-150 mt-5">
         <div className="text-center mb-5.25">
           <h1 className=" text-3xl font-bold mb-3">Welcome Back!</h1>
           <p className="text-sm">
@@ -88,7 +88,7 @@ export default function Login() {
             disabled={isLoading}
             className={`transition-colors ${
               isLoading
-                ? "bg-brand-700 cursor-not-allowed text-gray-600"
+                ? "bg-brand-700/90 cursor-not-allowed text-gray-600"
                 : "bg-brand cursor-pointer"
             }`}
           >
@@ -102,7 +102,7 @@ export default function Login() {
             )}
           </Button>
         </form>
-        <div className="w-full flex items-center shadow-[0px_4px_4px_0px_#0000001A] gap-9 mb-3.5 justify-center rounded-[10px] bg-white">
+        <div className="w-full h-12.5 flex items-center shadow-[0px_2px_4px_0px_#0000001A] gap-9 mb-3.5 justify-center rounded-[10px] bg-background">
           <a href="#" className="flex">
             <img src="/images/google.svg" alt="google" />
             <span className="text-black p-3 items-center text-sm">
@@ -110,7 +110,7 @@ export default function Login() {
             </span>
           </a>
         </div>
-        <div className="w-full rounded-[10px] shadow-[0px_4px_4px_0px_#0000001A] gap-9 flex justify-center items-center bg-white">
+        <div className="w-full h-12.5 rounded-[10px] shadow-[0px_2px_4px_0px_#0000001A] gap-9 flex justify-center items-center bg-background">
           <a href="#" className="flex">
             <img src="/images/apple.svg" alt="google" />
             <span className="text-black p-3 items-center text-sm">
@@ -118,14 +118,12 @@ export default function Login() {
             </span>
           </a>
         </div>
-        <div className="mt-4 text-center">
-          <p className="text-sm font-normal">
-            Don’t have an account?
-            <Link to="/auth/signup">
-              <span className="text-brand ml-1">Sign up</span>
-            </Link>
-          </p>
-        </div>
+        <p className="text-xs font-normal mt-8 text-center">
+          Don’t have an account?
+          <Link to="/auth/signup">
+            <span className="text-brand ml-1">Sign up</span>
+          </Link>
+        </p>
       </div>
     </div>
   );
