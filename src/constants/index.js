@@ -23,3 +23,5 @@ export const onboardingData = [
     subText: "Your goals, our priority.",
   },
 ];
+
+
