@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { HiOutlineLockClosed } from "react-icons/hi";
 
 export default function FormField({
   type,
@@ -21,10 +20,12 @@ export default function FormField({
         {label}
       </label>
       <div className={`relative flex items-center`}>
-        <div className="absolute left-3 token-icon pointer-events-none z-10 text-brand">
+        <div className="absolute left-3 pointer-events-none z-10 text-brand">
           <Icon
-            className={hasError && errors[name] ? "text-error" : "text-brand"}
-            size={18}
+            className={
+              hasError && errors[name] ? "text-error font-bold" : "text-brand"
+            }
+            size={20}
           />
         </div>
         <input

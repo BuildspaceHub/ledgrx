@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import joi from "joi";
+import { useNavigate, Link } from "react-router-dom";
+// Helpers
 import formatErrorMessages from "../../libs/formatters/auth";
 import { loginSchema } from "../../libs/validations/auth";
+// shared UIs
 import FormField from "../../components/FormField";
 import { CiLock, CiMail } from "react-icons/ci";
-import Button from "../../components/Button";
 import { FiLoader } from "react-icons/fi";
+import Button from "../../components/Button";
+import { RiLoader4Fill } from "react-icons/ri";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -27,15 +28,21 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (isLoading) return;
-    setIsLoading(true);
+    try {
+      if (isLoading) return;
+      setIsLoading(true);
 
-    const { error } = loginSchema.validate(formData, { abortEarly: false });
-    if (error) {
-      const validationErrors = formatErrorMessages(error);
-      setErrors(validationErrors);
+      const { error } = loginSchema.validate(formData, { abortEarly: false });
+      if (error) {
+        const validationErrors = formatErrorMessages(error);
+        setErrors(validationErrors);
+        setIsLoading(false);
+        return;
+      }
+    } catch (error) {
+      console.log(error.message);
+    } finally {
       setIsLoading(false);
-      return;
     }
   };
 
@@ -71,25 +78,30 @@ export default function Login() {
               Icon={CiLock}
             />
           </div>
-          <p className="text-start mb-6 text-sm font-normal text-brand">
+          <Link
+            to="/auth/forgot-password"
+            className="block text-start mb-6 text-sm font-normal text-brand"
+          >
             Forgot password?
-          </p>
+          </Link>
           <Button
             disabled={isLoading}
             className={`transition-colors ${
               isLoading
-                ? "bg-green-400 cursor-not-allowed"
+                ? "bg-brand-700 cursor-not-allowed text-gray-600"
                 : "bg-brand cursor-pointer"
             }`}
           >
             {isLoading ? (
-              <FiLoader className="text-2xl animate-spin" />
+              <span>
+                <RiLoader4Fill className="inline text-2xl mr-1 animate-spin" />
+                Logging in...
+              </span>
             ) : (
               "Log In"
             )}
           </Button>
         </form>
-
         <div className="w-full flex items-center shadow-[0px_4px_4px_0px_#0000001A] gap-9 mb-3.5 justify-center rounded-[10px] bg-white">
           <a href="#" className="flex">
             <img src="/images/google.svg" alt="google" />
