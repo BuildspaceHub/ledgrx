@@ -6,27 +6,27 @@ import { TiHome } from "react-icons/ti";
 
 export default function MobileNavbar() {
   return (
-    <div className="sticky bottom-0 bg-gray-200 z-999 w-full">
-      <div className="flex justify-between items-center w-full mx-auto h-18 pt-3 pb-2.5 px-4">
-        <Link className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-11.5 bg-white rounded">
+    <div className="fixed left-0 right-0 bottom-0 bg-background z-999 w-full">
+      <div className="w-full flex justify-between items-center mx-auto p-4">
+        <Link className="flex flex-col items-center justify-center text-brand rounded">
           <TiHome size={22} />
           <span className="text-xs">Home</span>
         </Link>
 
-        <Link className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-11.5 bg-white rounded">
+        <Link className="flex flex-col items-center justify-center text-gray-400 rounded">
           <FaChartBar size={22} />
           <span className="text-xs">Statistics</span>
         </Link>
 
         <Link
           to="/history"
-          className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-11.5 bg-white rounded"
+          className="flex flex-col items-center justify-center text-gray-400 rounded"
         >
           <IoFileTrayOutline size={22} />
           <span className="text-xs">History</span>
         </Link>
 
-        <Link className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-11.5 bg-white rounded">
+        <Link className="flex flex-col items-center justify-center text-gray-400 rounded">
           <IoSettingsOutline size={22} />
           <span className="text-xs">Settings</span>
         </Link>

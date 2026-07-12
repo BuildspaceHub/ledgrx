@@ -3,7 +3,7 @@ export const transactions = [
     id: 1,
     title: "Salary",
     date: "20 Jul",
-    amount: "30,000",
+    amount: "+30,000",
     income: true,
   },
   {
