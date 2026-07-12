@@ -1,5 +1,22 @@
 import Joi from "joi";
 
+export const signupSchema = Joi.object({
+  fullname: Joi.string().min(3).required().messages({
+    "string.empty": "Fullname required",
+  }),
+  email: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required()
+    .messages({
+      "string.empty": "Email required",
+      "string.email": "Invalid email",
+    }),
+  password: Joi.string().min(8).required().messages({
+    "string.min": "Password must be at least 8 characters long",
+    "string.empty": "Password is required",
+  }),
+});
+
 export const loginSchema = Joi.object({
   email: Joi.string()
     .email({ tlds: { allow: false } })

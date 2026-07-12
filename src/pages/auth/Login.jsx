@@ -40,7 +40,7 @@ export default function Login() {
   };
 
   return (
-    <div className="p-5 min-h-dvh flex items-center">
+    <div className="p-5 min-h-dvh flex items-center justify-center">
       <div className="w-full max-w-150">
         <div className="text-center mb-5.25">
           <h1 className=" text-3xl font-bold mb-3">Welcome Back!</h1>
@@ -76,13 +76,17 @@ export default function Login() {
           </p>
           <Button
             disabled={isLoading}
-            className={`w-full transition-colors ${
+            className={`transition-colors ${
               isLoading
-                ? "bg-green-300 cursor-not-allowed"
+                ? "bg-green-400 cursor-not-allowed"
                 : "bg-brand cursor-pointer"
             }`}
           >
-            {isLoading ? <FiLoader className="animate-spin" /> : "Log In"}
+            {isLoading ? (
+              <FiLoader className="text-2xl animate-spin" />
+            ) : (
+              "Log In"
+            )}
           </Button>
         </form>
 
@@ -106,7 +110,7 @@ export default function Login() {
           <p className="text-sm font-normal">
             Don’t have an account?
             <Link to="/auth/signup">
-              <span className="text-green-500 ml-1">Sign up</span>
+              <span className="text-brand ml-1">Sign up</span>
             </Link>
           </p>
         </div>
