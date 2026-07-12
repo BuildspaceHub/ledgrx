@@ -27,21 +27,20 @@ export default function ResetPasswordPage() {
 
     try {
       if (isLoading) return;
-      setErrors({});
       setIsLoading(true);
+      setErrors({});
 
-      const { error } = resetPasswordSchema.validate({
-        password,
-        confirmPassword,
+      const { error } = resetPasswordSchema.validate(formData, {
+        abortEarly: false,
       });
-
+      console.log(error);
       if (error) {
         const validationErrors = formatErrorMessages(error);
         setErrors(validationErrors);
         return;
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     } finally {
       setIsLoading(false);
     }
@@ -64,6 +63,7 @@ export default function ResetPasswordPage() {
             <FormField
               type="password"
               label="New Password"
+              name="password"
               placeholder="John******"
               errors={errors}
               value={formData.password}
@@ -73,6 +73,7 @@ export default function ResetPasswordPage() {
             <FormField
               type="password"
               label="Confirm Password"
+              name="password"
               placeholder="John******"
               errors={errors}
               value={formData.confirmPassword}
@@ -85,7 +86,7 @@ export default function ResetPasswordPage() {
             disabled={isLoading}
             className={`transition-colors ${
               isLoading
-                ? "bg-brand-700 cursor-not-allowed"
+                ? "bg-brand-700/90 cursor-not-allowed"
                 : "bg-brand cursor-pointer"
             }`}
           >
