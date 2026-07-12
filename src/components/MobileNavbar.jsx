@@ -7,7 +7,7 @@ import { TiHome } from "react-icons/ti";
 export default function MobileNavbar() {
   return (
     <div className="fixed left-0 right-0 bottom-0 bg-background z-999 w-full">
-      <div className="w-full flex justify-between items-center mx-auto px-4 py-2">
+      <div className="w-full flex justify-between items-center mx-auto p-4">
         <Link className="flex flex-col items-center justify-center text-brand rounded">
           <TiHome size={22} />
           <span className="text-xs">Home</span>
