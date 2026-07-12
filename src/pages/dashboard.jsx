@@ -12,9 +12,9 @@ import Header from "../components/Header";
 
 export default function Dashboard() {
   return (
-    <div className="bg-gray-200 min-h-dvh w-full flex flex-col relative">
+    <div className="bg-gray-100 min-h-dvh w-full flex flex-col relative">
       <Header />
-      <div className="w-full min-[95vh] pt-2 p-4 relative">
+      <div className="w-full min-[95vh] p-2 relative">
         <CurrentBalanceCard />
         <SummaryCard />
         <TransactionCard />

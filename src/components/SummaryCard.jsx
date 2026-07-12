@@ -1,15 +1,14 @@
-import React from "react";
-
 export default function SummaryCard() {
   return (
-    <div className="flex justify-between items-center p-4 w-full h-20.25 rounded-2xl bg-white mt-4">
+    <div className="flex justify-between items-center p-4 w-full rounded-xl bg-background mt-2">
       <div>
-        <p className="text-gray-400 mb-1">Income</p>
-        <h2 className="text-[#16A34A] font-semibold">↑ +balance</h2>
+        <p className="text-gray-400 text-xs mb-2">Income</p>
+        <h2 className="text-brand font-semibold">↑ +₦76,600</h2>
       </div>
+      <div className="w-px h-9 bg-brand/30" />
       <div>
-        <p className="text-gray-400 mb-1">Expense</p>
-        <h2 className="text-[#EF4444] font-semibold">↓ -balance</h2>
+        <p className="text-gray-400 text-xs mb-2">Expense</p>
+        <h2 className="text-error font-semibold">↓ -₦40,600</h2>
       </div>
     </div>
   );
