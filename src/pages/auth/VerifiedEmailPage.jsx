@@ -5,7 +5,7 @@ export default function VerifiedEmailPage() {
   return (
     <div className="min-h-screen p-5">
       {/* image */}
-      <div className="w-30 h-30 mx-auto bg-[#55B7220F] rounded-2xl gap-2 p-5 mt-5">
+      <div className="w-25 h-25 mx-auto bg-[#55B7220F] rounded-2xl gap-2 p-5 mt-5">
         <img src="/images/Group.png" alt="hurray" />
       </div>
       {/* content */}
@@ -19,7 +19,7 @@ export default function VerifiedEmailPage() {
         </p>
       </div>
       {/* button */}
-      <Button label="Go to dashboard" />
+      <Button>Go to dashboard</Button>
     </div>
   );
 }
