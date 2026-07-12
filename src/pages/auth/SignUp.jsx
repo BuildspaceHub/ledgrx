@@ -128,7 +128,7 @@ export default function SignUp() {
               className="w-5.5 h-5.5"
               src="/images/google.svg"
               alt="google"
-            />9
+            />
           </a>
           <a href="#" className=" text-black  text-sm">
             <img
@@ -139,7 +139,7 @@ export default function SignUp() {
           </a>
         </div>
 
-        <p className="text-sm font-normal mt-4 text-center">
+        <p className="text-xs font-normal mt-8 text-center">
           Already have an account?
           <Link to="/auth/login">
             <span className="text-brand ml-1">Log In</span>

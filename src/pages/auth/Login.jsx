@@ -118,7 +118,7 @@ export default function Login() {
             </span>
           </a>
         </div>
-        <p className="text-sm font-normal mt-4 text-center">
+        <p className="text-xs font-normal mt-8 text-center">
           Don’t have an account?
           <Link to="/auth/signup">
             <span className="text-brand ml-1">Sign up</span>
