@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { FiLoader } from "react-icons/fi";
 import { useNavigate, Link } from "react-router-dom";
+import { CiLock, CiMail, CiUser } from "react-icons/ci";
+// helpers
 import { signupSchema } from "../../libs/validations/auth";
 import formatErrorMessages from "../../libs/formatters/auth";
-import { CiLock, CiMail, CiUser } from "react-icons/ci";
-import { FiLoader } from "react-icons/fi";
+// shared UIs
 import FormField from "../../components/FormField";
 import Button from "../../components/Button";
 
@@ -14,9 +16,7 @@ export default function SignUp() {
     fullname: "",
   });
   const [errors, setErrors] = useState({});
-  const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
   const navigate = useNavigate();
 
   function handleChange(e) {
@@ -27,22 +27,29 @@ export default function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isLoading) return;
-    setIsLoading(true);
 
-    const { error } = signupSchema.validate(formData, { abortEarly: false });
+    try {
+      if (isLoading) return;
+      setIsLoading(true);
 
-    if (error) {
-      const validationErrors = formatErrorMessages(error);
-      console.log(validationErrors);
-      setErrors(validationErrors);
+      const { error } = signupSchema.validate(formData, { abortEarly: false });
+
+      if (error) {
+        const validationErrors = formatErrorMessages(error);
+        setErrors(validationErrors);
+        setIsLoading(false);
+        return;
+      }
+      
+      setFormData({ fullName: "", email: "", password: "" });
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error.message);
+    } finally {
       setIsLoading(false);
-      return;
     }
-
-    setFormData({ fullName: "", email: "", password: "" });
-    navigate("/dashboard");
   };
+
   return (
     <div className="p-5 min-h-dvh flex items-center justify-center">
       <div className="w-full max-w-150">
@@ -92,11 +99,18 @@ export default function SignUp() {
             disabled={isLoading}
             className={`mt-6 transition-colors ${
               isLoading
-                ? "bg-green-300 cursor-not-allowed"
+                ? "bg-brand-700 cursor-not-allowed text-gray-600"
                 : "bg-brand cursor-pointer"
             }`}
           >
-            {isLoading ? <FiLoader className="animate-spin" /> : "Sign up"}
+            {isLoading ? (
+              <span>
+                <RiLoader4Fill className="inline text-2xl mr-1 animate-spin" />
+                Signing up...
+              </span>
+            ) : (
+              "Sign up"
+            )}
           </Button>
         </form>
 
@@ -116,7 +130,11 @@ export default function SignUp() {
           </a>
 
           <a href="#" className=" text-black  text-sm">
-            <img className="w-7.5 h-7.5" src="/images/apple.svg" alt="apple" />
+            <img
+              className="w-7.5 h-7.5"
+              src="/images/apple.svg"
+              alt="apple icon"
+            />
           </a>
         </div>
 
