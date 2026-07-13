@@ -63,7 +63,7 @@ export default function Dashboard() {
   return (
     <div className="bg-gray-100 h-[100vh] w-full h-full flex flex-col justify-center relative">
       {/* Header */}
-      <div className="w-full h-[42px] flex py-4 mt-40 bg-gray-100 justify-bottom items-center absolute sticky top-0 z-10 ">
+      <div className="w-full h-[42px] flex py-4 mt-2 bg-gray-100 justify-bottom items-center absolute sticky top-0 z-10 ">
         <div className="w-[357px] flex py-4 px-4 mx-auto bg-gray-100 justify-between items-center">
           <Link to="/" className="flex p-1 items-center gap-4 rounded-2xl">
             <IoArrowBack size={20} />
@@ -153,22 +153,34 @@ export default function Dashboard() {
       {/* Bottom Navigation */}
       <div className="absolute sticky bottom-[0px] bg-white z-999 w-full">
         <div className="flex justify-between items-center w-full mx-auto h-[72px] pt-[12px] pb-[10px] px-[16px]">
-          <Link to="/" className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded">
+          <Link
+            to="/dashboard"
+            className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded"
+          >
             <TiHome size={22} />
             <span className="text-xs">Home</span>
           </Link>
 
-          <Link to="/statistics" className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded">
+          <Link
+            to="/statistics"
+            className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded"
+          >
             <FaChartBar size={22} />
             <span className="text-xs">Statistics</span>
           </Link>
 
-          <Link to="/history" className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-[46px] bg-white rounded">
+          <Link
+            to="/dashboard/history"
+            className="flex flex-col items-center justify-center text-green-500 w-[65.5px] h-[46px] bg-white rounded"
+          >
             <IoFileTrayOutline size={22} />
             <span className="text-xs">History</span>
           </Link>
 
-          <Link to="/settings" className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded">
+          <Link
+            to="/dashboard/settings"
+            className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded"
+          >
             <IoSettingsOutline size={22} />
             <span className="text-xs">Settings</span>
           </Link>
