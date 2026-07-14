@@ -10,6 +10,11 @@ import History from "./pages/History";
 import Splash from "./pages/Splash";
 import ForgotPasswordPage from "./pages/auth/ForgotPassword";
 import ResetPasswordPage from "./pages/auth/ResetPassword";
+import Analytics from "./pages/Analytics";
+import Settings from "./pages/Settings";
+import DashboardLayout from "./layouts/DashboardLayout";
+import TabLayout from "./layouts/TabLayout";
+import DetailLayout from "./layouts/DetailsLayout";
 
 export default function App() {
   return (
@@ -25,8 +30,18 @@ export default function App() {
         <Route path="/auth/verify-email" element={<ConfirmEmailPage />} />
         <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/auth/user-verified" element={<VerifiedEmailPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/history" element={<History />} />
+        {/* Dashboard */}
+        <Route element={<DashboardLayout />}>
+          <Route element={<TabLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+
+          <Route element={<DetailLayout />}>
+            <Route path="/history" element={<History />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
