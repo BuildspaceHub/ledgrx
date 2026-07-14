@@ -26,7 +26,9 @@ export default function MobileNavbar() {
           <span className="text-xs">History</span>
         </Link>
 
-        <Link className="flex flex-col items-center justify-center text-gray-400 rounded">
+        <Link
+         to="/dashboard/settings"
+         className="flex flex-col items-center justify-center text-gray-400 rounded">
           <IoSettingsOutline size={22} />
           <span className="text-xs">Settings</span>
         </Link>

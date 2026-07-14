@@ -137,7 +137,7 @@ export default function Dashboard() {
           </Link>
 
           <Link
-            to="/statistics"
+            to="/dashboard/statistics"
             className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded"
           >
             <FaChartBar size={22} />
@@ -153,7 +153,7 @@ export default function Dashboard() {
           </Link>
 
           <Link
-            to="/settings"
+            to="/dashboard/settings"
             className="flex flex-col items-center justify-center text-gray-400 w-[65.5px] h-[46px] bg-white rounded"
           >
             <IoSettingsOutline size={22} />

@@ -105,7 +105,7 @@ export default function Login() {
         <div className="w-full h-12.5 flex items-center shadow-[0px_2px_4px_0px_#0000001A] gap-9 mb-3.5 justify-center rounded-[10px] bg-background">
           <a href="#" className="flex">
             <img src="/images/google.svg" alt="google" />
-            <span className="text-black p-3 items-center text-sm">
+            <span className="text-[var(--text)] p-3 items-center text-sm">
               Continue with Google
             </span>
           </a>
@@ -113,7 +113,7 @@ export default function Login() {
         <div className="w-full h-12.5 rounded-[10px] shadow-[0px_2px_4px_0px_#0000001A] gap-9 flex justify-center items-center bg-background">
           <a href="#" className="flex">
             <img src="/images/apple.svg" alt="google" />
-            <span className="text-black p-3 items-center text-sm">
+            <span className="text-[var(--text)] p-3 items-center text-sm">
               Continue with Apple
             </span>
           </a>

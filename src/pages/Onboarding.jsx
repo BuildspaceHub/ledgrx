@@ -19,7 +19,7 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-dvh p-4 flex flex-col justify-between max-w-md mx-auto md:max-w-2xl md:justify-center">
+    <div className="min-h-dvh p-4 flex flex-col bg-[var(--bg)] justify-between max-w-md mx-auto md:max-w-2xl md:justify-center">
       <div className="w-full text-right">
         {!isLastScreen && (
           <Link
@@ -41,10 +41,10 @@ export default function Onboarding() {
         </div>
 
         <div className="flex flex-col md:items-start md:text-left md:w-1/2">
-          <h1 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">
+          <h1 className="text-2xl font-bold text-[var(--text)] mb-3 tracking-tight">
             {currentScreen.title}
           </h1>
-          <p className="text-[14px] text-gray-500 mb-2 max-w-xs md:max-w-none">
+          <p className="text-[14px] text-[var(--text)] mb-2 max-w-xs md:max-w-none">
             {currentScreen.description}
           </p>
           {currentScreen.subText && (
