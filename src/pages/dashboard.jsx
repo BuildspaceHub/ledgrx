@@ -6,20 +6,16 @@ import { Link } from "react-router-dom";
 import CurrentBalanceCard from "../components/CurrentBalanceCard";
 import SummaryCard from "../components/SummaryCard";
 import { transactions } from "../constants/transaction";
-import TransactionCard from "../components/TransactionCard";
-import MobileNavbar from "../components/MobileNavbar";
+import Transactions from "../components/Transactions";
 import Header from "../components/Header";
 
 export default function Dashboard() {
   return (
-    <div className="bg-[var(--bg)] min-h-dvh w-full flex flex-col relative">
+    <div className="bg-[var(--bg)] w-full flex flex-col p-2">
       <Header />
-      <div className="w-full min-[95vh] p-2 relative">
-        <CurrentBalanceCard />
-        <SummaryCard />
-        <TransactionCard />
-        <MobileNavbar />
-      </div>
+      <CurrentBalanceCard />
+      <SummaryCard />
+      <Transactions />
     </div>
   );
 }

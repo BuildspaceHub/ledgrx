@@ -1,38 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaChartBar } from "react-icons/fa";
-import { IoFileTrayOutline, IoSettingsOutline } from "react-icons/io5";
-import { TiHome } from "react-icons/ti";
+import { NavLink } from "react-router-dom";
+import { navItems } from "../constants";
 
 export default function MobileNavbar() {
   return (
-    <div className="fixed left-0 right-0 bottom-0 bg-background z-999 w-full">
+    <footer className="fixed left-0 right-0 bottom-0 z-40 w-full h-16 bg-[var(--surface-2)] ">
       <div className="w-full flex justify-between items-center mx-auto p-4">
-        <Link className="flex flex-col items-center justify-center text-brand rounded">
-          <TiHome size={22} />
-          <span className="text-xs">Home</span>
-        </Link>
-
-        <Link className="flex flex-col items-center justify-center text-gray-400 rounded">
-          <FaChartBar size={22} />
-          <span className="text-xs">Statistics</span>
-        </Link>
-
-        <Link
-          to="/dashboard/history"
-          className="flex flex-col items-center justify-center text-gray-400 rounded"
-        >
-          <IoFileTrayOutline size={22} />
-          <span className="text-xs">History</span>
-        </Link>
-
-        <Link
-         to="/dashboard/settings"
-         className="flex flex-col items-center justify-center text-gray-400 rounded">
-          <IoSettingsOutline size={22} />
-          <span className="text-xs">Settings</span>
-        </Link>
+        {navItems.map(({ name, path, icon: Icon }) => (
+          <NavLink
+            key={path}
+            to={path}
+            className={({ isActive }) =>
+              `flex flex-col items-center ${
+                isActive ? "text-[var(--color-brand)]" : "text-gray-400"
+              }`
+            }
+          >
+            <Icon size={22} />
+            <span className="text-[10px]">{name}</span>
+          </NavLink>
+        ))}
       </div>
-    </div>
+    </footer>
   );
 }

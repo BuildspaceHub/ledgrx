@@ -125,7 +125,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Bottom Navigation */}
+      Bottom Navigation
       <div className="absolute sticky bottom-[0px] bg-white z-999 w-full">
         <div className="flex justify-between items-center w-full mx-auto h-[72px] pt-[12px] pb-[10px] px-[16px]">
           <Link

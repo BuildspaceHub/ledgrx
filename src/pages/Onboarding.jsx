@@ -24,7 +24,7 @@ export default function Onboarding() {
         {!isLastScreen && (
           <Link
             to="/auth/login"
-            className="text-xs font-medium text-brand hover:underline transition-all"
+            className="text-xs font-medium text-[var(--color-brand)] hover:underline transition-all"
           >
             Skip
           </Link>
@@ -44,7 +44,7 @@ export default function Onboarding() {
           <h1 className="text-2xl font-bold text-[var(--text)] mb-3 tracking-tight">
             {currentScreen.title}
           </h1>
-          <p className="text-[14px] text-[var(--text)] mb-2 max-w-xs md:max-w-none">
+          <p className="text-[14px] text-[var(--text-2)] mb-2 max-w-xs md:max-w-none">
             {currentScreen.description}
           </p>
           {currentScreen.subText && (

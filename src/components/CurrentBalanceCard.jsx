@@ -13,12 +13,12 @@ export default function CurrentBalanceCard() {
           </h2>
           <button
             onClick={() => setShowBalance(!showBalance)}
-            className="text-background"
+            className="text-[var(--text)]"
           >
             {showBalance ? <FaEye /> : <FaEyeSlash />}
           </button>
         </div>
-        <div className="w-9 h-9 rounded-full bg-background/80 text-brand flex justify-center items-center">
+        <div className="w-9 h-9 rounded-full bg-[var(--surface-2)] text-[var(--color-brand)] flex justify-center items-center">
           <FaPlus />
         </div>
       </div>

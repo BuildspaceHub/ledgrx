@@ -14,7 +14,7 @@ export default function Splash() {
     <div className="bg-[var(--bg)] min-h-screen flex justify-center items-center flex-col gap-5">
       <h3 className="text-3xl font-poppins text-[var(--text)] font-normal md:text-5xl">
         Ledgr
-        <span className="text-brand text-4xl animate-pulse md:text-7xl">X</span>
+        <span className="text-[var(--color-brand)] text-4xl animate-pulse md:text-7xl">X</span>
       </h3>
     </div>
   );

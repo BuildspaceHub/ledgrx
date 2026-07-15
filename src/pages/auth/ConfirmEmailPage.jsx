@@ -20,7 +20,7 @@ export default function ConfirmEmailPage() {
       {/* button */}
       <div className=" flex justify-center items-center flex-col gap-4">
         <Button>Open Inbox</Button>
-        <Button className="mt-2 font-normal! text-[12px] text-[#000000]! p-4 bg-background! shadow-[0px_2px_4px_#0000001A]">
+        <Button className="mt-2 font-normal! text-[12px] text-[var(--text)] p-4 bg-[var(--surface-2)] shadow-[0px_2px_4px_#0000001A]">
           Resend Link
         </Button>
       </div>
