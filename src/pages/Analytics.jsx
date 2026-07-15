@@ -7,7 +7,7 @@ export default function Analytics() {
       <div className="size-30 mx-auto my-5">
         <GrAnalytics className="w-full h-full text-gray-300" />
       </div>
-      <p className="text-gray-400 text-center">
+      <p className="text-[var(--text)] text-center text-sm">
         Analytics is not available yet
       </p>
     </div>

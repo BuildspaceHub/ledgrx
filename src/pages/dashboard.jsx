@@ -11,7 +11,7 @@ import Header from "../components/Header";
 
 export default function Dashboard() {
   return (
-    <div className="w-full flex flex-col p-2">
+    <div className="bg-[var(--bg)] w-full flex flex-col p-2">
       <Header />
       <CurrentBalanceCard />
       <SummaryCard />

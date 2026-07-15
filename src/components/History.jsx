@@ -11,16 +11,16 @@ import PageHeader from "../components/PageHeader";
 
 export default function History() {
   return (
-    <div className="w-full flex flex-col justify-center relative">
+    <div className="w-full bg-[var(--bg)] flex flex-col justify-center relative">
       <div className="w-full p-4 mt-2 m-auto relative">
         <div className="w-69.25 h-9 px-6 m-auto justify-around flex items-center">
-          <div className="rounded-lg py-1 p-4 bg-brand text-[12px] text-white flex justify-around items-center  ">
+          <div className="rounded-lg py-1 p-4 bg-[var(--color-brand)] text-[12px] text-white flex justify-around items-center  ">
             All
           </div>
-          <div className="w-19 h-9 rounded-lg py-0.5 px-4 bg-[#F3F4f6] text-[12px] text-[#374151] flex justify-around items-center  ">
+          <div className="w-19 h-9 rounded-lg py-0.5 px-4 bg-[var(--surface-2)] text-[12px] text-[var(--text)] flex justify-around items-center  ">
             Income
           </div>
-          <div className="w-20.25 h-9 rounded-lg py-0.5 px-4 bg-[#F3F4f6] text-[12px] text-[#374151] flex justify-around items-center  ">
+          <div className="w-20.25 h-9 rounded-lg py-0.5 px-4 bg-[var(--surface-2)] text-[12px] text-[var(--text)] flex justify-around items-center  ">
             Expense
           </div>
         </div>
@@ -29,7 +29,7 @@ export default function History() {
         <div className="mt-6 space-y-2 overflow-auto">
           <div className="flex flex-col items-center w-full mx-auto mb-3 justify-between">
             <h2 className="font-semibold text-[14px] ">Today</h2>
-          </div>
+          </div >
           {today.map((item, index) => (
             <TransactionCard transaction={item} key={index} />
           ))}
