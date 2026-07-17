@@ -35,7 +35,6 @@
   --border: #474747bd;
   --toggle-off: #ffffff;
 }
-/* 0f172a */
 
 @theme inline {
   --color-brand: var(--color-brand);

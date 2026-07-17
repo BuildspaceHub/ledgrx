@@ -6,7 +6,7 @@ import Onboarding from "./pages/Onboarding";
 import VerifiedEmailPage from "./pages/auth/VerifiedEmailPage";
 import ConfirmEmailPage from "./pages/auth/ConfirmEmailPage";
 import Dashboard from "./pages/dashboard";
-import History from "./components/History";
+import TransactionHistory from "./pages/TransactionHistory";
 // import Settings from "./componenets/Settings";
 import Splash from "./pages/Splash";
 import ForgotPasswordPage from "./pages/auth/ForgotPassword";
@@ -38,7 +38,8 @@ export default function App() {
           </Route>
 
           <Route element={<DetailLayout />}>
-            <Route path="/history" element={<History />} />
+            <Route path="/history" element={<TransactionHistory />} />
+            <Route path="/history" element={<TransactionHistory />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/settings" element={<Settings />} />
           </Route>

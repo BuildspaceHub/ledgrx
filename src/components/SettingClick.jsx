@@ -35,8 +35,8 @@ export default function SettingClick() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col mx-auto justify-center relative bg-[var(--bg)] text-[var(--text)]">
-      <div className="w-full flex flex-col flex-wrap min-h-[95vh] p-2 m-auto relative bg-[var(--bg)]">
+    <div className="min-h-screen w-full flex flex-col mx-auto justify-center relative bg-(--bg) text-(--text)">
+      <div className="w-full flex flex-col flex-wrap min-h-[95vh] p-2 m-auto relative bg-(--bg)">
         <div className="w-full rounded-2xl flex  px-2 mt-0 shadow-md justify-between items-center bg-[var(--surface)] border border-[var(--border)]">
           <div className="flex p-2 items-center gap-3 rounded-2xl">
             <div className="justify-center align-middle w-[40px] h-[40px] overflow-hidden rounded-full bg-[var(--surface-2)]">
