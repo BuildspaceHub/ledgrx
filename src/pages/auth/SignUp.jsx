@@ -44,7 +44,7 @@ export default function SignUp() {
         return;
       }
       // SENT DATA TO BACKEND
-      const data = await AuthService.registerUser();
+      const data = await AuthService.registerUser(formData);
       if (!data.success) {
         toast.error(data.message);
         return;

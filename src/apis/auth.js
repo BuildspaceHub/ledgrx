@@ -1,5 +1,5 @@
 class AuthService {
-  static async registerUser() {
+  static async registerUser(formData) {
     const res = await fetch(
       "https://expense-tracker-api-k4rj.onrender.com/api/v1/auth/register",
       {
