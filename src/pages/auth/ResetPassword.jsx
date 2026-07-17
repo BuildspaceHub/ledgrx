@@ -1,103 +1,106 @@
 import React from "react";
-import { BsArrowLeft } from "react-icons/bs";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { resetPasswordSchema } from "../../libs/validators/auth";
-import { HiOutlineLockClosed } from "react-icons/hi";
+import { CiLock } from "react-icons/ci";
+// helpers
 import formatErrorMessages from "../../libs/formatters/auth";
+import { resetPasswordSchema } from "../../libs/validations/auth";
+// shared UIs
+import FormField from "../../components/FormField";
+import BackButton from "../../components/BackButton";
+import Button from "../../components/Button";
 
 export default function ResetPasswordPage() {
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [showCurrentPassword, setShowCurrentPassword] = React.useState(false);
-  const [error, setError] = React.useState({});
+  const [formData, setFormData] = React.useState({
+    password: "",
+    confirmPassword: "",
+  });
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [errors, setErrors] = React.useState({});
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const { error } = resetPasswordSchema.validate({
-      password,
-      confirmPassword,
-    });
+    try {
+      if (isLoading) return;
+      setIsLoading(true);
+      setErrors({});
 
-    if (error) {
-      const errors = formatErrorMessages(error);
-      console.log(errors);
-      setError(errors);
-      return;
+      const { error } = resetPasswordSchema.validate(formData, {
+        abortEarly: false,
+      });
+      console.log(error);
+      if (error) {
+        const validationErrors = formatErrorMessages(error);
+        setErrors(validationErrors);
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
     <div className="min-h-dvh p-4">
-      <BsArrowLeft className="text-[30px] mb-10" />
-      <div>
-        <h1 className="font-bold text-[25px] mb-4">Create A New Password</h1>
-        <p className="text-[14px] text-center mb-4">
-          Your new password must not be the same as the previous used password.
-        </p>
-      </div>
-
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="password" className="block font-medium mb-1">
-            New Password
-          </label>
-          <div
-            className={`relative flex items-center rounded-[10px] bg-[#D9D9D9] overflow-hidden ${error?.email ? "outline-1 outline-error" : ""} focus:outline-2 focus:outline-brand`}
-          >
-            <HiOutlineLockClosed className="size-6 mx-2 text-brand" />
-            <input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              value={password}
-              placeholder="johndoe@example.com"
-              className={`w-full h-12.5 pr-4 pl-1 outline-0`}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-              onClick={() => setShowPassword(!showPassword)}
-              type="button"
-              className="absolute right-1 top-1/2 -translate-1/2"
-            >
-              {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-            </button>
-          </div>
-          <span className="text-error text-[12px]">{error?.password}</span>
+      <BackButton />
+      <div className="mt-5">
+        <div className="text-center">
+          <h1 className="font-bold text-[25px] mb-4">Create A New Password</h1>
+          <p className="text-[14px] text-center mb-4">
+            Your new password must not be the same as the previous used
+            password.
+          </p>
         </div>
-        <div>
-          <label htmlFor="password" className="block font-medium mb-1">
-            Confirm Password
-          </label>
-          <div
-            className={`relative flex items-center rounded-[10px] bg-[#D9D9D9] overflow-hidden ${error?.confirmPassword ? "outline-1 outline-error" : ""} focus:outline-2 focus:outline-brand`}
-          >
-            <HiOutlineLockClosed className="size-6 mx-2 text-brand" />
-            <input
-              id="password"
+
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          <div className="flex flex-col gap-1.5">
+            <FormField
               type="password"
-              value={confirmPassword}
-              placeholder="johndoe@example.com"
-              className={`w-full h-12.5 pr-4 pl-1 outline-0`}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              label="New Password"
+              name="password"
+              placeholder="John******"
+              errors={errors}
+              value={formData.password}
+              onChange={handleChange}
+              Icon={CiLock}
             />
-            <button
-              onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-              type="button"
-              className="absolute right-1 top-1/2 -translate-1/2"
-            >
-              {showCurrentPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-            </button>
+            <FormField
+              type="password"
+              label="Confirm Password"
+              name="password"
+              placeholder="John******"
+              errors={errors}
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              Icon={CiLock}
+            />
           </div>
-          <span className="text-error text-[12px]">
-            {error?.confirmPassword}
-          </span>
-        </div>
 
-        <button className="border bg-brand text-background w-full h-12.5 p-2 rounded-[10px] ">
-          Reset Password
-        </button>
-      </form>
+          <Button
+            disabled={isLoading}
+            className={`transition-colors ${
+              isLoading
+                ? "bg-brand-700/90 cursor-not-allowed"
+                : "bg-brand cursor-pointer"
+            }`}
+          >
+            {isLoading ? (
+              <span>
+                <RiLoader4Fill className="inline text-2xl mr-1 animate-spin" />
+                Sending...
+              </span>
+            ) : (
+              "Reset Password"
+            )}
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }

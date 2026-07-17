@@ -1,29 +1,50 @@
 import { useState } from "react";
-import BackButton from "../../components/BackButton";
-import { forgotPasswordSchema } from "../../libs/validators/auth";
+import { CiMail } from "react-icons/ci";
+// helper
 import FormatErrorMessages from "../../libs/formatters/auth";
-import { MdEmail } from "react-icons/md";
+import { forgotPasswordSchema } from "../../libs/validations/auth";
+import { handleChange } from "../../libs/utils";
+// shared uis
+import BackButton from "../../components/BackButton";
+import FormField from "../../components/FormField";
+import Button from "../../components/Button";
+import { RiLoader4Fill } from "react-icons/ri";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  function handleChange(e) {
+    setEmail(e.target.value);
+    setErrors({});
+  }
 
   function requestPasswordLink(e) {
     e.preventDefault();
-    setError("");
-    // validate email
-    const { error } = forgotPasswordSchema.validate({ email });
+    try {
+      if (isLoading) return;
+      setIsLoading(true);
+      setErrors({});
 
-    const formattedError = FormatErrorMessages(error);
-    setError(formattedError);
+      const { error } = forgotPasswordSchema.validate({ email });
+      if (error) {
+        const formattedError = FormatErrorMessages(error);
+        setErrors(formattedError);
+        setIsLoading(false);
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
     <div className="min-h-dvh p-5">
-      <div className="mb-2">
-        <BackButton />
-      </div>
-      <div className="">
+      <BackButton />
+      <div className="mt-4">
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold mb-4">Forgot Password</h2>
           <p className="text-sm">
@@ -31,33 +52,34 @@ export default function ForgotPasswordPage() {
             new password via email
           </p>
         </div>
-
-        <form onSubmit={requestPasswordLink} className="flex flex-col gap-6">
-          <div>
-            <label htmlFor="email" className="block font-medium mb-1">
-              Your Email Account
-            </label>
-            <div
-              className={`flex items-center rounded-[10px] bg-[#D9D9D9] overflow-hidden ${
-                error?.email ? "outline-1 outline-error" : ""
-              } focus:outline-2 focus:outline-brand`}
-            >
-              <MdEmail className="size-6 mx-2 text-brand" />
-              <input
-                id="email"
-                type="email"
-                value={email}
-                placeholder="johndoe@example.com"
-                className={`w-full h-12.5 pr-4 pl-1 outline-0`}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <span className="text-error text-[12px]">{error?.email}</span>
-          </div>
-
-          <button className="w-full h-12.5 rounded-[10px] px-4 py-5 flex justify-center items-center bg-brand text-white">vbv
-            Request Link
-          </button>
+        <form onSubmit={requestPasswordLink} className="flex flex-col gap-2">
+          <FormField
+            type="email"
+            placeholder="Johndoe@example.com"
+            name="email"
+            label="Email address"
+            value={email}
+            errors={errors}
+            onChange={handleChange}
+            Icon={CiMail}
+          />
+          <Button
+            disabled={isLoading}
+            className={`transition-colors ${
+              isLoading
+                ? "bg-brand-700 cursor-not-allowed"
+                : "bg-brand cursor-pointer"
+            }`}
+          >
+            {isLoading ? (
+              <span>
+                <RiLoader4Fill className="inline text-2xl mr-1 animate-spin" />
+                Sending...
+              </span>
+            ) : (
+              "Request Link"
+            )}
+          </Button>
         </form>
       </div>
     </div>

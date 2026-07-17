@@ -1,3 +1,8 @@
+import { BiLineChart } from "react-icons/bi";
+import { CiHome } from "react-icons/ci";
+import { FaChartBar } from "react-icons/fa";
+import { IoFileTrayOutline, IoSettingsOutline } from "react-icons/io5";
+
 export const onboardingData = [
   {
     id: 1,
@@ -21,5 +26,28 @@ export const onboardingData = [
     description:
       "Stay on track, save more and build a better financial future.",
     subText: "Your goals, our priority.",
+  },
+];
+
+export const navItems = [
+  {
+    name: "Home",
+    path: "/dashboard",
+    icon: CiHome,
+  },
+  {
+    name: "Analytics",
+    path: "/analytics",
+    icon: BiLineChart,
+  },
+  {
+    name: "History",
+    path: "/history",
+    icon: IoFileTrayOutline,
+  },
+  {
+    name: "Settings",
+    path: "/settings",
+    icon: IoSettingsOutline,
   },
 ];

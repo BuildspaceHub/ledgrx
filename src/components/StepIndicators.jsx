@@ -9,7 +9,7 @@ export default function StepIndicators({ total, current }) {
         <div
           key={index}
           className={`h-1.5 TS-transition w-1.5 rounded-full transition-all duration-300 ${
-            index === current ? "bg-brand w-6" : "bg-gray-300"
+            index === current ? "bg-[var(--color-brand)] w-6" : "bg-gray-300"
           }`}
         />
       ))}

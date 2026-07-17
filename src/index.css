@@ -1,17 +1,46 @@
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
 @import "tailwindcss";
 
 :root {
   --color-brand: #52c218;
+  --color-brand-700: #449e16;
+  --color-secondary: #f5f5f5;
   --color-background: #ffffff;
   --color-error: #ff4540;
   --font-bricolage: "Bricolage Grotesque", sans-serif;
   --font-poppins: "Poppins", sans-serif;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+  --header-bg: #f3f4f6;
+  --text: #111827;
+  --text-2: #313236;
+  --muted: #cecece;
+  --border: #e5e7eb4d;
+  --toggle-off: #1e1e1e;
 }
+
+[data-theme="dark"] {
+  --color-brand: #52c218;
+  --color-background: #0f172a;
+  --color-secondary: #111827;
+  --color-error: #ff4540;
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --surface-2: #1e1e1e;
+  --header-bg: #0f172a;
+  --text: #f8fafc;
+  --text-2: #d0d0d0;
+  --muted: #d0d0d0;
+  --border: #474747bd;
+  --toggle-off: #ffffff;
+}
+/* 0f172a */
 
 @theme inline {
   --color-brand: var(--color-brand);
   --color-background: var(--color-background);
+  --color-secondary: var(--color-secondary);
   --color-error: var(--color-error);
   --font-bricolage: var(--font-bricolage);
   --font-poppins: var(--font-poppins);
@@ -20,6 +49,11 @@
 @layer base {
   body {
     font-family: var(--font-poppins);
+    background-color: var(--bg);
+    color: var(--text);
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
 }
 
