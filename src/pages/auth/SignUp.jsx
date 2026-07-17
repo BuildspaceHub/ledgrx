@@ -10,6 +10,7 @@ import FormField from "../../components/FormField";
 import Button from "../../components/Button";
 import { RiLoader4Fill } from "react-icons/ri";
 import { toast } from "react-toastify";
+import AuthService from "../../apis/auth";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
