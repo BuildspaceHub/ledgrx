@@ -3,12 +3,14 @@ import { useNavigate, Link } from "react-router-dom";
 // Helpers
 import formatErrorMessages from "../../libs/formatters/auth";
 import { loginSchema } from "../../libs/validations/auth";
-// shared UIs
+// Shared UIs
 import FormField from "../../components/FormField";
 import { CiLock, CiMail } from "react-icons/ci";
 import { FiLoader } from "react-icons/fi";
 import Button from "../../components/Button";
 import { RiLoader4Fill } from "react-icons/ri";
+import AuthService from "../../apis/auth";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +27,7 @@ export default function Login() {
     setErrors((prev) => ({ ...prev, [name]: "" }));
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -39,6 +41,15 @@ export default function Login() {
         setIsLoading(false);
         return;
       }
+
+      const data = await AuthService.loginUser(formData);
+      if (!data.success) {
+        toast.error(data.message);
+        return;
+      }
+
+      toast.success(data.message);
+      navigate("/dashboard");
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -105,7 +116,7 @@ export default function Login() {
         <div className="w-full h-12.5 flex items-center shadow-[0px_2px_4px_0px_#0000001A] gap-9 mb-3.5 justify-center rounded-[10px] bg-background">
           <a href="#" className="flex">
             <img src="/images/google.svg" alt="google" />
-            <span className="text-[var(--text)] p-3 items-center text-sm">
+            <span className="text-(--text) p-3 items-center text-sm">
               Continue with Google
             </span>
           </a>
@@ -113,7 +124,7 @@ export default function Login() {
         <div className="w-full h-12.5 rounded-[10px] shadow-[0px_2px_4px_0px_#0000001A] gap-9 flex justify-center items-center bg-background">
           <a href="#" className="flex">
             <img src="/images/apple.svg" alt="google" />
-            <span className="text-[var(--text)] p-3 items-center text-sm">
+            <span className="text-(--text) p-3 items-center text-sm">
               Continue with Apple
             </span>
           </a>

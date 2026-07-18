@@ -9,7 +9,7 @@ import TransactionCard from "../components/TransactionCard";
 import BackButton from "../components/BackButton";
 import PageHeader from "../components/PageHeader";
 
-export default function History() {
+export default function TransactionHistory() {
   return (
     <div className="w-full bg-[var(--bg)] flex flex-col justify-center relative">
       <div className="w-full p-4 mt-2 m-auto relative">
@@ -29,7 +29,7 @@ export default function History() {
         <div className="mt-6 space-y-2 overflow-auto">
           <div className="flex flex-col items-center w-full mx-auto mb-3 justify-between">
             <h2 className="font-semibold text-[14px] ">Today</h2>
-          </div >
+          </div>
           {today.map((item, index) => (
             <TransactionCard transaction={item} key={index} />
           ))}

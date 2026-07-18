@@ -10,8 +10,6 @@ function updateToggleUI(theme) {
   }
 
   const isDark = theme === "dark";
-//   outerToggle.classList.toggle("justify-start", !isDark);
-//   outerToggle.classList.toggle("justify-end", isDark);
   outerToggle.classList.toggle("bg-[#1e1e1e]", !isDark);
   outerToggle.classList.toggle("bg-(--toggle-off)", isDark);
   innerToggle.style.transform = isDark ? "translateX(100%)" : "translateX(0%)";
@@ -54,7 +52,10 @@ export function toggleTheme() {
     return "light";
   }
 
-  const currentTheme = document.documentElement.getAttribute(THEME_ATTRIBUTE) === "dark" ? "dark" : "light";
+  const currentTheme =
+    document.documentElement.getAttribute(THEME_ATTRIBUTE) === "dark"
+      ? "dark"
+      : "light";
   return applyTheme(currentTheme === "dark" ? "light" : "dark");
 }
 
