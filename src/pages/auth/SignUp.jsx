@@ -8,6 +8,9 @@ import formatErrorMessages from "../../libs/formatters/auth";
 // shared UIs
 import FormField from "../../components/FormField";
 import Button from "../../components/Button";
+import { RiLoader4Fill } from "react-icons/ri";
+import { toast } from "react-toastify";
+import AuthService from "../../apis/auth";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -25,7 +28,7 @@ export default function SignUp() {
     setErrors((prev) => ({ ...prev, [name]: "" }));
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -40,9 +43,15 @@ export default function SignUp() {
         setIsLoading(false);
         return;
       }
+      // SENT DATA TO BACKEND
+      const data = await AuthService.registerUser(formData);
+      if (!data.success) {
+        toast.error(data.message);
+        return;
+      }
 
-      setFormData({ fullName: "", email: "", password: "" });
-      navigate("/dashboard");
+      toast.success(data.message);
+      navigate("/auth/login");
     } catch (error) {
       console.log(error.message);
     } finally {
