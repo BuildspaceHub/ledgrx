@@ -6,6 +6,7 @@
   --color-brand-700: #449e16;
   --color-secondary: #f5f5f5;
   --color-background: #ffffff;
+  --color-foreground: #121212;
   --color-error: #ff4540;
   --font-bricolage: "Bricolage Grotesque", sans-serif;
   --font-poppins: "Poppins", sans-serif;
@@ -20,9 +21,27 @@
   --toggle-off: #1e1e1e;
 }
 
+.dark {
+  --color-brand: #52c218;
+  --color-brand-700: #449e16;
+  --color-background: #121212;
+  --color-foreground: #f3f0f0;
+  --color-secondary: #111827;
+  --color-error: #ff4540;
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --surface-2: #1e1e1e;
+  --header-bg: #0f172a;
+  --text: #f8fafc;
+  --text-2: #d0d0d0;
+  --muted: #d0d0d0;
+  --border: #474747bd;
+  --toggle-off: #ffffff;
+}
+
 [data-theme="dark"] {
   --color-brand: #52c218;
-  --color-background: #0f172a;
+  --color-background: #121212;
   --color-secondary: #111827;
   --color-error: #ff4540;
   --bg: #121212;
@@ -39,7 +58,11 @@
 @theme inline {
   --color-brand: var(--color-brand);
   --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
   --color-secondary: var(--color-secondary);
+  --color-surface: var(--color-surface);
+  --color-surface-200: var(--color-surface-2);
+  --color-toggle-off: var(--toggle-off);
   --color-error: var(--color-error);
   --font-bricolage: var(--font-bricolage);
   --font-poppins: var(--font-poppins);
@@ -53,6 +76,12 @@
     transition:
       background-color 0.2s ease,
       color 0.2s ease;
+  }
+}
+
+@layer utilities {
+  .active {
+    @apply translate-x-full;
   }
 }
 

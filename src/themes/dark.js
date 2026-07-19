@@ -32,60 +32,60 @@ export function applyTheme(theme = "light") {
   return resolvedTheme;
 }
 
-export function initTheme() {
-  if (typeof window === "undefined") {
-    return "light";
-  }
+// export function initTheme() {
+//   if (typeof window === "undefined") {
+//     return "light";
+//   }
 
-  const savedTheme = window.localStorage.getItem(STORAGE_KEY);
+//   const savedTheme = window.localStorage.getItem(STORAGE_KEY);
 
-  if (savedTheme === "dark" || savedTheme === "light") {
-    return applyTheme(savedTheme);
-  }
+//   if (savedTheme === "dark" || savedTheme === "light") {
+//     return applyTheme(savedTheme);
+//   }
 
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return applyTheme(prefersDark ? "dark" : "light");
-}
+//   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+//   return applyTheme(prefersDark ? "dark" : "light");
+// }
 
-export function toggleTheme() {
-  if (typeof document === "undefined") {
-    return "light";
-  }
+// export function toggleTheme() {
+//   if (typeof document === "undefined") {
+//     return "light";
+//   }
 
-  const currentTheme =
-    document.documentElement.getAttribute(THEME_ATTRIBUTE) === "dark"
-      ? "dark"
-      : "light";
-  return applyTheme(currentTheme === "dark" ? "light" : "dark");
-}
+//   const currentTheme =
+//     document.documentElement.getAttribute(THEME_ATTRIBUTE) === "dark"
+//       ? "dark"
+//       : "light";
+//   return applyTheme(currentTheme === "dark" ? "light" : "dark");
+// }
 
-export function bindThemeToggle() {
-  const outerToggle = document.querySelector(".outer-toggle");
+// export function bindThemeToggle() {
+//   const outerToggle = document.querySelector(".outer-toggle");
 
-  if (!outerToggle) {
-    return;
-  }
+//   if (!outerToggle) {
+//     return;
+//   }
 
-  outerToggle.onclick = () => {
-    toggleTheme();
-  };
-}
+//   outerToggle.onclick = () => {
+//     toggleTheme();
+//   };
+// }
 
-if (typeof window !== "undefined") {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-      initTheme();
-      bindThemeToggle();
-    });
-  } else {
-    initTheme();
-    bindThemeToggle();
-  }
-}
+// if (typeof window !== "undefined") {
+//   if (document.readyState === "loading") {
+//     document.addEventListener("DOMContentLoaded", () => {
+//       initTheme();
+//       bindThemeToggle();
+//     });
+//   } else {
+//     initTheme();
+//     bindThemeToggle();
+//   }
+// }
 
-export default {
-  applyTheme,
-  initTheme,
-  toggleTheme,
-  bindThemeToggle,
-};
+// export default {
+//   applyTheme,
+//   initTheme,
+//   toggleTheme,
+//   bindThemeToggle,
+// };
