@@ -21,36 +21,31 @@ import { ToastContainer } from "react-toastify";
 export default function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Splash />} />
-          <Route path="/onboarding" element={<Onboarding />} />
-          {/* Authentication Routes */}
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/signup" element={<SignUp />} />
-          <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
-          <Route path="/auth/verify-email" element={<ConfirmEmailPage />} />
-          <Route
-            path="/auth/forgot-password"
-            element={<ForgotPasswordPage />}
-          />
-          <Route path="/auth/user-verified" element={<VerifiedEmailPage />} />
-          {/* Dashboard */}
-          <Route element={<DashboardLayout />}>
-            <Route element={<TabLayout />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-            </Route>
-
-            <Route element={<DetailLayout />}>
-              <Route path="/history" element={<TransactionHistory />} />
-              <Route path="/history/:id" element={<TransactionHistory />} />
-              <Route path="/analytics" element={<Analytics />} />
-              <Route path="/settings" element={<Settings />} />
-            </Route>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<Splash />} />
+        <Route path="/onboarding" element={<Onboarding />} />
+        {/* Authentication Routes */}
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/signup" element={<SignUp />} />
+        <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/auth/verify-email" element={<ConfirmEmailPage />} />
+        <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/auth/user-verified" element={<VerifiedEmailPage />} />
+        {/* Dashboard */}
+        <Route element={<DashboardLayout />}>
+          <Route element={<TabLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
-        </Routes>
-      </BrowserRouter>
+
+          <Route element={<DetailLayout />}>
+            <Route path="/history" element={<TransactionHistory />} />
+            <Route path="/history/:id" element={<TransactionHistory />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
+        </Route>
+      </Routes>
 
       <ToastContainer />
     </>
