@@ -14,7 +14,9 @@ export default function TransactionCard({ transaction }) {
       </div>
       <span
         className={`font-medium text-sm ${
-          transaction.transaction_type == "income" ? "text-[var(--color-brand)]" : "text-[var(--color-error)]"
+          transaction.transaction_type == "income"
+            ? "text-[var(--color-brand)]"
+            : "text-[var(--color-error)]"
         }`}
       >
         {transaction.amount}

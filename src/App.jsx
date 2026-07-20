@@ -16,6 +16,7 @@ import Settings from "./pages/Settings";
 import DashboardLayout from "./layouts/DashboardLayout";
 import TabLayout from "./layouts/TabLayout";
 import DetailLayout from "./layouts/DetailsLayout";
+import TransactionDetails from "./pages/TransactionDetails";
 import { ToastContainer } from "react-toastify";
 
 export default function App() {
@@ -45,6 +46,10 @@ export default function App() {
             <Route element={<DetailLayout />}>
               <Route path="/history" element={<TransactionHistory />} />
               <Route path="/history/:id" element={<TransactionHistory />} />
+              <Route
+                path="/details/:id/edit"
+                element={<TransactionDetails />}
+              />
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/settings" element={<Settings />} />
             </Route>
