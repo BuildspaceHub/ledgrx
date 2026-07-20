@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
 import { transactions } from "../constants/transaction";
 import TransactionCard from "./TransactionCard";
+import { useEffect, useState } from "react";
+import TransactionService from "../apis/transaction";
 
 export default function Transactions() {
+  const [transactions, setTransactions] = useState([]);
+  useEffect(() => {
+    async function fetchTransaction() {
+      const response = await TransactionService.getRecentTransaction();
+
+      setTransactions(response.transactions);
+    }
+    fetchTransaction();
+  }, []);
+
+  if (transactions.length == 0) {
+    return <div className="w-full h-[300px] text-gray-100 flex justify-center text-center items-center">No transactions found</div>;
+  }
+
   return (
     <div className="mt-4">
       <div className="rounded-[10px] p-2">
