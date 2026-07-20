@@ -1,6 +1,9 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import TransactionService from "../apis/transaction";
 
 export default function TransactionCard({ transaction }) {
+  
   return (
     <div
       className="w-full flex justify-between items-center bg-[var(--surface-2)] p-2.5 rounded-lg"
