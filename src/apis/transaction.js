@@ -3,7 +3,7 @@ import { customFetch } from "./apiClient";
 const transactionBaseUrl = `/api/v1/transactions`;
 
 class TransactionService {
-  static async getRecentTransaction() {
+  static async getTransactions() {
     try {
       const response = await customFetch(transactionBaseUrl, {
         method: "GET",
