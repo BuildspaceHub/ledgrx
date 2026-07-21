@@ -1,11 +1,11 @@
-import { BASE_URL } from "../constants/api_constant";
+import { customFetch } from "./apiClient";
 
-const transactionBaseUrl = `${BASE_URL}/api/v1/transactions`;
+const transactionBaseUrl = `/api/v1/transactions`;
 
 class TransactionService {
   static async getRecentTransaction() {
     try {
-      const response = await fetch(transactionBaseUrl, {
+      const response = await customFetch(transactionBaseUrl, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

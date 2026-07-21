@@ -1,13 +1,11 @@
-import { BASE_URL } from "../constants/api_constant";
+import { customFetch } from "./apiClient";
 
 class UserService {
   static async getUserData() {
-    const res = await fetch(`${BASE_URL}/api/v1/me`, {
-      credentials: "include",
-    });
+    const res = await customFetch(`/api/v1/me`);
 
     if (!res.ok) throw new Error("Error fetching user data");
-    
+
     return res.json();
   }
 }
