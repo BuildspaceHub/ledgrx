@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { CiMail } from "react-icons/ci";
 // helper
-import FormatErrorMessages from "../../libs/formatters/auth";
+import FormatErrorMessages from "../../utils/formatters/auth";
 import { forgotPasswordSchema } from "../../libs/validations/auth";
-import { handleChange } from "../../libs/utils";
+import { handleChange } from "../../utils/utils";
 // shared uis
 import BackButton from "../../components/BackButton";
 import FormField from "../../components/FormField";

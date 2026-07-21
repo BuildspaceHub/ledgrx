@@ -5,7 +5,7 @@ import Header from "../components/Header";
 
 export default function Dashboard() {
   return (
-    <div className="bg-(--bg) w-full flex flex-col p-2">
+    <div className="bg-background w-full flex flex-col p-2">
       <Header />
       <CurrentBalanceCard />
       <SummaryCard />

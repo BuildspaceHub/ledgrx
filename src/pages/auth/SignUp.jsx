@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { CiLock, CiMail, CiUser } from "react-icons/ci";
 // helpers
 import { signupSchema } from "../../libs/validations/auth";
-import formatErrorMessages from "../../libs/formatters/auth";
+import formatErrorMessages from "../../utils/formatters/auth";
 // shared UIs
 import FormField from "../../components/FormField";
 import Button from "../../components/Button";

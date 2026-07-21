@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 // Helpers
-import formatErrorMessages from "../../libs/formatters/auth";
+import formatErrorMessages from "../../utils/formatters/auth";
 import { loginSchema } from "../../libs/validations/auth";
 // Shared UIs
 import FormField from "../../components/FormField";
@@ -43,13 +43,13 @@ export default function Login() {
       }
 
       const data = await AuthService.loginUser(formData);
-      if (!data.success) {
+      if (data.success) {
+        toast.success(data.message);
+        navigate("/dashboard");
+      } else {
         toast.error(data.message);
-        return;
+        setIsLoading(false);
       }
-
-      toast.success(data.message);
-      navigate("/dashboard");
     } catch (error) {
       console.log(error.message);
     } finally {

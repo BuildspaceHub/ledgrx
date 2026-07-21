@@ -1,22 +1,41 @@
 import { Link } from "react-router-dom";
-import { transactions } from "../constants/transaction";
 import TransactionCard from "./TransactionCard";
 import { useEffect, useState } from "react";
 import TransactionService from "../apis/transaction";
+import Spinner from "./Spinner";
 
 export default function Transactions() {
   const [transactions, setTransactions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     async function fetchTransaction() {
-      const response = await TransactionService.getRecentTransaction();
-
-      setTransactions(response.transactions);
+      try {
+        const response = await TransactionService.getRecentTransaction();
+        setTransactions(response.transactions || []);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
     fetchTransaction();
   }, []);
 
-  if (transactions.length == 0) {
-    return <div className="w-full h-[300px] text-gray-100 flex justify-center text-center items-center">No transactions found</div>;
+  if (isLoading) {
+    return (
+      <div className="w-full h-75 flex justify-center items-center text-sm text-gray-400">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (transactions.length === 0) {
+    return (
+      <div className="w-full h-75 text-gray-400 flex justify-center text-center items-center border border-dashed rounded-[10px]">
+        No transactions yet
+      </div>
+    );
   }
 
   return (
