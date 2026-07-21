@@ -3,13 +3,20 @@ import { IoFileTrayOutline } from "react-icons/io5";
 import { TiHome } from "react-icons/ti";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoArrowBack } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { today, yesterday } from "../constants/history";
 import TransactionCard from "../components/TransactionCard";
 import BackButton from "../components/BackButton";
 import PageHeader from "../components/PageHeader";
+import { useNavigate } from "react-router-dom";
 
 export default function TransactionHistory() {
+  const navigate = useNavigate();
+
+  const handleDetails = (id) => {
+    navigate(`/details/${id}/edit`);
+  };
+
   return (
     <div className="w-full bg-[var(--bg)] flex flex-col justify-center relative">
       <div className="w-full p-4 mt-2 m-auto relative">
@@ -30,8 +37,15 @@ export default function TransactionHistory() {
           <div className="flex flex-col items-center w-full mx-auto mb-3 justify-between">
             <h2 className="font-semibold text-[14px] ">Today</h2>
           </div>
+
           {today.map((item, index) => (
-            <TransactionCard transaction={item} key={index} />
+            <div
+              key={index}
+              onClick={() => handleDetails(item.id)}
+              className="cursor-pointer transition-transform hover:scale-[1.02]"
+            >
+              <TransactionCard transaction={item} key={index} />
+            </div>
           ))}
         </div>
         <div className="mt-2 space-y-2 overflow-auto">
@@ -39,7 +53,13 @@ export default function TransactionHistory() {
             <h2 className="font-semibold text-[14px] ">Yesterday</h2>
           </div>
           {yesterday.map((item, index) => (
-            <TransactionCard transaction={item} key={index} />
+            <div
+              key={index}
+              onClick={() => handleDetails(item.id)}
+              className="cursor-pointer transition-transform hover:scale-[1.02]"
+            >
+              <TransactionCard transaction={item} key={index} />
+            </div>
           ))}
         </div>
       </div>
