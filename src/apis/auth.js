@@ -1,8 +1,8 @@
-import { customFetch } from "./apiClient";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 class AuthService {
   static async registerUser(formData) {
-    const res = await customFetch(`/api/v1/auth/register`, {
+    const res = await fetch(`${BASE_URL}/api/v1/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -15,7 +15,7 @@ class AuthService {
   }
 
   static async loginUser(formData) {
-    const res = await customFetch(`/api/v1/auth/login`, {
+    const res = await fetch(`${BASE_URL}/api/v1/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

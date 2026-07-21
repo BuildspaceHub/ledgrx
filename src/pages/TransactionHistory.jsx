@@ -9,8 +9,24 @@ import TransactionCard from "../components/TransactionCard";
 import BackButton from "../components/BackButton";
 import PageHeader from "../components/PageHeader";
 import { useNavigate } from "react-router-dom";
+import TransactionService from "../apis/transaction";
+import { useEffect, useState } from "react";
 
 export default function TransactionHistory() {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    async function getAllTransactions() {
+      try {
+        const result = await TransactionService.getTransactions();
+        setTransactions(result.response.transactions || []);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getAllTransactions();
+  }, []);
+
   const navigate = useNavigate();
 
   const handleDetails = (id) => {
@@ -38,29 +54,23 @@ export default function TransactionHistory() {
             <h2 className="font-semibold text-[14px] ">Today</h2>
           </div>
 
-          {today.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => handleDetails(item.id)}
-              className="cursor-pointer transition-transform hover:scale-[1.02]"
-            >
-              <TransactionCard transaction={item} key={index} />
+          {transactions.length == 0 ? (
+            <div className="w-full h-75 text-gray-400 flex justify-center text-center items-center border border-dashed rounded-[10px]">
+              No transactions yet
             </div>
-          ))}
-        </div>
-        <div className="mt-2 space-y-2 overflow-auto">
-          <div className="flex flex-col items-center w-full mx-auto mb-3 justify-between">
-            <h2 className="font-semibold text-[14px] ">Yesterday</h2>
-          </div>
-          {yesterday.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => handleDetails(item.id)}
-              className="cursor-pointer transition-transform hover:scale-[1.02]"
-            >
-              <TransactionCard transaction={item} key={index} />
-            </div>
-          ))}
+          ) : (
+            <>
+              {transactions.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => handleDetails(item.id)}
+                  className="cursor-pointer transition-transform hover:scale-[1.02]"
+                >
+                  <TransactionCard transaction={item} key={index} />
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>

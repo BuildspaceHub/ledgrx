@@ -1,4 +1,5 @@
-import { BASE_URL } from "../constants/api_constant";
+// import { BASE_URL } from "../constants/api_constant";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL
 
 export async function customFetch(endpoint, options = {}) {
   const defaultHeaders = {

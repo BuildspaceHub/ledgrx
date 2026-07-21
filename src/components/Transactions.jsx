@@ -11,8 +11,8 @@ export default function Transactions() {
   useEffect(() => {
     async function fetchTransaction() {
       try {
-        const response = await TransactionService.getRecentTransaction();
-        setTransactions(response.transactions || []);
+        const result = await TransactionService.getTransactions();
+        setTransactions(result.response.transactions || []);
       } catch (error) {
         console.log(error.message);
       } finally {
