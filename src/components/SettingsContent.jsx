@@ -44,7 +44,7 @@ export default function SettingContent() {
         <div className="p-3 rounded-2xl flex shadow-sm justify-between items-center bg-(--surface) border border-(--border)">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 overflow-hidden rounded-full bg-(--surface-2)">
-              <img src="https://i.pravatar.cc/100" alt="profile" />
+              <img src="https://i.pravatar.cc/100" alt="profile pic" />
             </div>
             <div>
               <h2 className="font-bold text-sm text-(--text)">Hakeem Doe</h2>

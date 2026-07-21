@@ -1,4 +1,5 @@
-const BASE_URL = "https://expense-tracker-api-k4rj.onrender.com";
+import { BASE_URL } from "../constants/api_constant";
+
 const transactionBaseUrl = `${BASE_URL}/api/v1/transactions`;
 
 class TransactionService {
@@ -8,7 +9,7 @@ class TransactionService {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-        }, 
+        },
         credentials: "include",
       });
       if (!response.ok) {

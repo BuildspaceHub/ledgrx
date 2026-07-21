@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
@@ -7,7 +7,6 @@ import VerifiedEmailPage from "./pages/auth/VerifiedEmailPage";
 import ConfirmEmailPage from "./pages/auth/ConfirmEmailPage";
 import Dashboard from "./pages/dashboard";
 import TransactionHistory from "./pages/TransactionHistory";
-// import Settings from "./componenets/Settings";
 import Splash from "./pages/Splash";
 import ForgotPasswordPage from "./pages/auth/ForgotPassword";
 import ResetPasswordPage from "./pages/auth/ResetPassword";
@@ -17,6 +16,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import TabLayout from "./layouts/TabLayout";
 import DetailLayout from "./layouts/DetailsLayout";
 import { ToastContainer } from "react-toastify";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 export default function App() {
   return (
@@ -32,19 +32,22 @@ export default function App() {
         <Route path="/auth/verify-email" element={<ConfirmEmailPage />} />
         <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/auth/user-verified" element={<VerifiedEmailPage />} />
-        {/* Dashboard */}
-        <Route element={<DashboardLayout />}>
-          <Route element={<TabLayout />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Route>
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route element={<DashboardLayout />}>
+            <Route element={<TabLayout />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
 
-          <Route element={<DetailLayout />}>
-            <Route path="/history" element={<TransactionHistory />} />
-            <Route path="/history/:id" element={<TransactionHistory />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route element={<DetailLayout />}>
+              <Route path="/history" element={<TransactionHistory />} />
+              <Route path="/history/:id" element={<TransactionHistory />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/settings" element={<Settings />} />
+            </Route>
           </Route>
         </Route>
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
 
       <ToastContainer />

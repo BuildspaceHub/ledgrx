@@ -1,7 +1,7 @@
 import React from "react";
 import { CiLock } from "react-icons/ci";
 // helpers
-import formatErrorMessages from "../../libs/formatters/auth";
+import formatErrorMessages from "../../utils/formatters/auth";
 import { resetPasswordSchema } from "../../libs/validations/auth";
 // shared UIs
 import FormField from "../../components/FormField";

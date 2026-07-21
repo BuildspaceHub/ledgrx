@@ -5,7 +5,7 @@ import MobileNavbar from "../components/MobileNavbar";
 
 export default function DashboardLayout() {
   return (
-    <div className="h-dvh flex flex-col bg-[var(--bg)] overflow-hidden">
+    <div className="h-dvh flex flex-col bg-background overflow-hidden">
       <main
         className="flex-1 pb-16 overflow-y-auto overscroll-contain"
         style={{ WebkitOverflowScrolling: "touch" }}

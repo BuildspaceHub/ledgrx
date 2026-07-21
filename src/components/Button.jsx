@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "../libs/utils";
+import { cn } from "../utils/utils";
 
 export default function Button({ children, className, ...props }) {
   return (
