@@ -18,6 +18,7 @@ import DetailLayout from "./layouts/DetailsLayout";
 import TransactionDetails from "./pages/TransactionDetails";
 import { ToastContainer } from "react-toastify";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import AddRecords from "./pages/AddRecords";
 
 export default function App() {
   return (
@@ -53,6 +54,8 @@ export default function App() {
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
+
+        <Route path="/add-records" element={<AddRecords />} />
       </Routes>
 
       <ToastContainer />

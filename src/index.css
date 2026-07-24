@@ -19,6 +19,7 @@
   --muted: #cecece;
   --border: #e5e7eb4d;
   --toggle-off: #1e1e1e;
+  --neutral: #ffffff;
 }
 
 .dark {
@@ -37,6 +38,7 @@
   --muted: #d0d0d0;
   --border: #474747bd;
   --toggle-off: #ffffff;
+  --neutral: #1b1b1b;
 }
 
 [data-theme="dark"] {
@@ -62,6 +64,7 @@
   --color-secondary: var(--color-secondary);
   --color-surface: var(--color-surface);
   --color-surface-200: var(--color-surface-2);
+  --color-neutral: var(--neutral);
   --color-toggle-off: var(--toggle-off);
   --color-error: var(--color-error);
   --font-bricolage: var(--font-bricolage);
