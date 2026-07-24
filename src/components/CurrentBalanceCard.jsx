@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash, FaPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function CurrentBalanceCard() {
   const [showBalance, setShowBalance] = useState(false);
@@ -18,9 +19,12 @@ export default function CurrentBalanceCard() {
             {showBalance ? <FaEye /> : <FaEyeSlash />}
           </button>
         </div>
-        <div className="w-9 h-9 rounded-full bg-surface-2 text-brand flex justify-center items-center">
-          <FaPlus />
-        </div>
+
+        <Link to="/add-records">
+          <div className="w-9 h-9 rounded-full bg-white text-brand flex justify-center items-center">
+            <FaPlus />
+          </div>
+        </Link>
       </div>
     </div>
   );
