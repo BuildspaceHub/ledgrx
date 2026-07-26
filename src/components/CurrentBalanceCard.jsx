@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye, FaEyeSlash, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import DashboardService from "../apis/dashboard";
 
 export default function CurrentBalanceCard() {
   const [showBalance, setShowBalance] = useState(false);
+  useEffect(()=>{
+    async function getDashboardData(){
+      const res = await DashboardService.getDashboardSummary() 
+      console.log(res);
+    }
+    getDashboardData();
+  })
   return (
     <div className="w-full mt-1 items-center border bg-brand border-brand rounded-xl p-4">
       <p className="text-(--text) mb-1 text-xs">Current balance</p>
